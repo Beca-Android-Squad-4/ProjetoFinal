@@ -30,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         }
 
-        val delay = 1000L
+        val delay = 3000L
         // installSplashScreen()
         setContentView(binding.root)
 
