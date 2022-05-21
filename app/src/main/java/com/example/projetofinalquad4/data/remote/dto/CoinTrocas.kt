@@ -1,6 +1,6 @@
 package com.example.projetofinalquad4.data.remote.dto
 
-data class CoinDetailDto(
+data class CoinTrocas(
     val data_end: String,
     val data_orderbook_end: String,
     val data_orderbook_start: String,
