@@ -1,23 +1,6 @@
 package com.example.projetofinalquad4.data.remote.dto
 
-import com.example.projetofinalquad4.model.Coin
-
-data class CoinDto(
-    val id: String,
-    val is_active: Boolean,
-    val is_new: Boolean,
-    val name: String,
-    val rank: Int,
-    val symbol: String,
-    val type: String
+data class ConiDto(
+    val exchange_id: String,
+    val url: String
 )
-
-fun CoinDto.toCoin(): Coin {
-    return Coin(
-        id = id,
-        is_active = is_active,
-        name = name,
-        rank = rank,
-        symbol = symbol
-    )
-}
