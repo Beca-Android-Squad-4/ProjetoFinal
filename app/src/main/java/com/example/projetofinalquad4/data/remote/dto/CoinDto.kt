@@ -31,7 +31,7 @@ fun mockCoinDto() = listOf(
     )
 )
 
-fun CoinDto.toCoin(): Coin {
+/*fun CoinDto.toCoin(): Coin {
     return Coin(
         id = id,
         is_active = is_active,
@@ -39,4 +39,4 @@ fun CoinDto.toCoin(): Coin {
         rank = rank,
         symbol = symbol
     )
-}
+}*/

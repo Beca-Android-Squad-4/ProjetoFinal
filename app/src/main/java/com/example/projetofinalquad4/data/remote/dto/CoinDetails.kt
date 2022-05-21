@@ -9,7 +9,7 @@ GET /v1/exchanges/{exchange_id}
 GET /v1/exchanges?filter_exchange_id={filter_exchange_id}*/
 
 @Parcelize
-data class CoinTrocas(
+data class CoinDetails(
     @SerializedName("exchange_id")
     val exchange_id: String?,
     @SerializedName("website")

@@ -7,6 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitInstance {
 
     companion object {
+        private const val BASE_URL = "https://rest.coinapi.io/"
         fun get(): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
