@@ -1,5 +1,7 @@
 package com.example.projetofinalquad4.data.remote.dto
 
+import com.example.projetofinalquad4.model.CoinDetail
+
 data class CoinDetailDto(
     val description: String,
     val development_status: String,
@@ -25,3 +27,16 @@ data class CoinDetailDto(
     val type: String,
     val whitepaper: Whitepaper
 )
+
+fun CoinDetailDto.toCoinDetail(): CoinDetail{
+    return CoinDetail (
+        coinId = id,
+        name = name,
+        description = description,
+        symbol = symbol,
+        rank = rank,
+        is_active = is_active,
+        tags = tags.map { it.name },
+        team = team
+    )
+}

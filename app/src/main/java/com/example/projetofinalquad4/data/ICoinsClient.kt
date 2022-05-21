@@ -1,5 +1,6 @@
 package com.example.projetofinalquad4.data
 
+import com.example.projetofinalquad4.data.remote.dto.CoinDetailDto
 import com.example.projetofinalquad4.data.remote.dto.CoinDto
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,5 +11,5 @@ interface ICoinsClient {
     suspend fun getcoins(): List<CoinDto>
 
     @GET("/v1/coins/{coinId}")
-    suspend fun getCoinById(@Path("coinId") coinId: String)
+    suspend fun getCoinById(@Path("coinId") coinId: String) : CoinDetailDto
 }
