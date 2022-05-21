@@ -1,4 +1,6 @@
-package com.example.projetofinalquad4.model.dto
+package com.example.projetofinalquad4.data.remote.dto
+
+import com.example.projetofinalquad4.model.Coin
 
 data class CoinDto(
     val id: String,
@@ -9,3 +11,13 @@ data class CoinDto(
     val symbol: String,
     val type: String
 )
+
+fun CoinDto.toCoin(): Coin {
+    return Coin(
+        id = id,
+        is_active = is_active,
+        name = name,
+        rank = rank,
+        symbol = symbol
+    )
+}
