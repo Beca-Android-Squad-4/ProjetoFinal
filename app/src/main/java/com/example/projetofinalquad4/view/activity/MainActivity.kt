@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.databinding.ActivityMainBinding
 import com.example.projetofinalquad4.view.fragment.FavoritesFragment
-import com.example.projetofinalquad4.view.fragment.MoedasFragment
+import com.example.projetofinalquad4.view.fragment.CoinsFragment
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (savedInstanceState == null) {
-            replaceFragment(MoedasFragment())
+            replaceFragment(CoinsFragment())
         }
 
         // NavigationBarView(https://m3.material.io/components/navigation-bar/implementation/android) é mais indicada para essa funcionalidade,
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_moedas -> {
-                    replaceFragment(MoedasFragment())
+                    replaceFragment(CoinsFragment())
                     true
                 }
                 R.id.nav_favoritos -> {
