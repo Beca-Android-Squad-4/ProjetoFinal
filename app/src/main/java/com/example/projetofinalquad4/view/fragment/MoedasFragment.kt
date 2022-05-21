@@ -1,4 +1,4 @@
-package com.example.projetofinalquad4
+package com.example.projetofinalquad4.view.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.projetofinalquad4.viewModel.MainViewModel
+import com.example.projetofinalquad4.R
 
 class MoedasFragment : Fragment() {
 

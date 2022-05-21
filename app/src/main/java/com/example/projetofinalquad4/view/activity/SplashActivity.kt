@@ -1,4 +1,4 @@
-package com.example.projetofinalquad4
+package com.example.projetofinalquad4.view.activity
 
 import android.content.Intent
 import android.os.Build

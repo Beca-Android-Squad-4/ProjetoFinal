@@ -1,4 +1,4 @@
-package com.example.projetofinalquad4
+package com.example.projetofinalquad4.viewModel
 
 import androidx.lifecycle.ViewModel
 

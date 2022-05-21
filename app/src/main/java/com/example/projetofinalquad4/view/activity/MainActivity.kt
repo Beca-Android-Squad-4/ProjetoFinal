@@ -1,9 +1,12 @@
-package com.example.projetofinalquad4
+package com.example.projetofinalquad4.view.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.databinding.ActivityMainBinding
+import com.example.projetofinalquad4.view.fragment.FavoritesFragment
+import com.example.projetofinalquad4.view.fragment.MoedasFragment
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }

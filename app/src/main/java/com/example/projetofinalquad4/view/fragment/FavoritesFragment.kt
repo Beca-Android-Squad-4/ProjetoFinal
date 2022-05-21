@@ -1,4 +1,4 @@
-package com.example.projetofinalquad4
+package com.example.projetofinalquad4.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.projetofinalquad4.viewModel.FavoritesViewModel
+import com.example.projetofinalquad4.R
 
 class FavoritesFragment : Fragment() {
 

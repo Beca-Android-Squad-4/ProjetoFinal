@@ -15,7 +15,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".view.activity.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="@string/title_activity_splash"
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="false"></activity>
 
         <meta-data
