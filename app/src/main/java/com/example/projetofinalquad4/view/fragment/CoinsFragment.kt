@@ -1,11 +1,11 @@
 package com.example.projetofinalquad4.view.fragment
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.projetofinalquad4.R
@@ -36,7 +36,7 @@ class CoinsFragment : Fragment() {
         val view = binding.root
         setupUi()
 
-        setupSearchView(listResponse)
+//        setupSearchView(listResponse)
 
         return view
     }
@@ -46,14 +46,23 @@ class CoinsFragment : Fragment() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.searchView.clearFocus()
-                newList = Helpers.FilterListQuery(query)
+                newList = Helpers.FilterListQuery(query, list)
+                Log.d("QuerySubmit", "onQueryTextSubmit: $newList")
+                setlistQueryAdapter(newList)
                 return true
             }
 
-            override fun onQueryTextChange(p0: String?): Boolean {
-                return false
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // binding.searchView.clearFocus()
+                newList = Helpers.FilterListQuery(newText, list)
+                Log.d("QuerySubmit", "onQueryTextSubmit: $newList")
+                setlistQueryAdapter(newList)
+                return true
             }
         })
+    }
+
+    private fun setlistQueryAdapter(newList: MutableList<CoinDto>) {
         if (newList.isNotEmpty()) setListAdapter(newList) else Helpers.ToastText(
             "Não existe essa moeda",
             requireContext()
@@ -87,8 +96,8 @@ class CoinsFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 Helpers.ToastText("Item clicado: $position", requireContext())
 
-                //TODO BOTA AQUI O FRAGMENT
-                //replaceFragment(datailsFragment)
+                // TODO BOTA AQUI O FRAGMENT
+                // replaceFragment(datailsFragment)
             }
         })
     }
@@ -112,5 +121,4 @@ class CoinsFragment : Fragment() {
         fragmentTransaction?.replace(R.id.nav_fragment, fragment)
         fragmentTransaction?.commit()
     }
-
 }
