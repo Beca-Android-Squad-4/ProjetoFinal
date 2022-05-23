@@ -12,16 +12,16 @@ class Helpers {
             Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
         }
 
-        fun FilterListQuery(text: String?): MutableList<CoinDto> {
-            var list: MutableList<CoinDto> = ArrayList()
+        fun FilterListQuery(text: String?, list: List<CoinDto>): MutableList<CoinDto> {
+            var newList: MutableList<CoinDto> = ArrayList()
             list.forEach {
                 if (it.name.contains(text.toString(), true)
                     or it.symbol.contains(text.toString(), false)
                 ) {
-                    list.add(it)
+                    newList.add(it)
                 }
             }
-            return list
+            return newList
         }
 
 //        fun replaceFragment(fragment: Fragment){
