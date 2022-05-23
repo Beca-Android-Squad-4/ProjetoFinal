@@ -63,13 +63,16 @@ class CoinsFragment : Fragment() {
     }
 
     private fun setlistQueryAdapter(newList: MutableList<CoinDto>) {
-        if (newList.isNotEmpty()) setListAdapter(newList) else Helpers.ToastText(
+        if (newList.isNotEmpty()) {
+            setListAdapter(newList)
+        } else Helpers.ToastText(
             "Não existe essa moeda",
             requireContext()
         )
     }
 
     private fun setupUi() {
+        binding.tvMainDate.text = Helpers.GetCalendarDate()
         configAdapter()
     }
 
