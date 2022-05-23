@@ -8,13 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.viewModel.DetailsViewModel
+import com.example.projetofinalquad4.viewModel.FavoritesViewModel
 
-class InfoFragment : Fragment() {
+class InfoFragment: Fragment() {
     companion object {
         fun newInstance() = InfoFragment()
     }
 
-    private lateinit var viewModel: DetailsViewModel
+    private lateinit var viewModel: FavoritesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +27,7 @@ class InfoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
         // TODO: Use the ViewModel
     }
 }

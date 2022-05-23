@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.projetofinalquad4.data.remote.dto.CoinDto
 import com.example.projetofinalquad4.databinding.ItemCoinBinding
 
-class AdapterCoins : ListAdapter<CoinDto, AdapterCoins.ViewHolder>(DIFF_CALLBACK) {
+class InfoAdapter : ListAdapter<CoinDto, InfoAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var mListener: onItemClickListener
 
@@ -38,8 +38,7 @@ class AdapterCoins : ListAdapter<CoinDto, AdapterCoins.ViewHolder>(DIFF_CALLBACK
             binding.tvCoinPriceItem.text = x.rank.toString()
 
             Glide.with(binding.root)
-                .load(x.type) // ?????????????????
-                .into(binding.ivCoinItem)
+                .load(x.type).into(binding.ivCoinItem)
         }
 
         init {
