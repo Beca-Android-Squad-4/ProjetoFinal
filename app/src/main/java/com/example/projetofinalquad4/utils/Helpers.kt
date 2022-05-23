@@ -2,6 +2,7 @@ package com.example.projetofinalquad4.utils
 
 import android.content.Context
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.projetofinalquad4.data.remote.dto.CoinDto
 
 class Helpers {
@@ -22,5 +23,12 @@ class Helpers {
             }
             return list
         }
+
+//        fun replaceFragment(fragment: Fragment){
+//            val fragmentManager = supportFragmentManager
+//            val fragmentTransaction = fragmentManager.beginTransaction()
+//            fragmentTransaction.replace(binding.navFragment.id, fragment)
+//            fragmentTransaction.commit()
+//        }
     }
 }

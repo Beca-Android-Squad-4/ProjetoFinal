@@ -1,5 +1,6 @@
 package com.example.projetofinalquad4.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.data.remote.dto.CoinDto
 import com.example.projetofinalquad4.data.remote.dto.mockCoinDto
 import com.example.projetofinalquad4.databinding.MainFragmentBinding
@@ -80,6 +82,15 @@ class CoinsFragment : Fragment() {
 
     private fun setListAdapter(list: List<CoinDto>) {
         adapter.submitList(list)
+        adapter.notifyDataSetChanged()
+        adapter.onItemClickListener(object : AdapterCoins.onItemClickListener {
+            override fun onItemClick(position: Int) {
+                Helpers.ToastText("Item clicado: $position", requireContext())
+
+                //TODO BOTA AQUI O FRAGMENT
+                //replaceFragment(datailsFragment)
+            }
+        })
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -94,4 +105,12 @@ class CoinsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = activity?.supportFragmentManager
+        val fragmentTransaction = fragmentManager?.beginTransaction()
+        fragmentTransaction?.replace(R.id.nav_fragment, fragment)
+        fragmentTransaction?.commit()
+    }
+
 }
