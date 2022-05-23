@@ -11,17 +11,27 @@ import com.example.projetofinalquad4.databinding.ItemCoinBinding
 
 class AdapterCoins : ListAdapter<CoinDto, AdapterCoins.ViewHolder>(DIFF_CALLBACK) {
 
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun onItemClickListener(listener: onItemClickListener) {
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemCoinBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ViewHolder(binding)
+        return ViewHolder(binding,mListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class ViewHolder(private val binding: ItemCoinBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemCoinBinding, listener: onItemClickListener) : RecyclerView.ViewHolder(binding.root) {
         fun bind(x: CoinDto) {
             binding.tvCoinSymbolItem.text = x.symbol
             binding.tvCoinNameItem.text = x.name
@@ -30,6 +40,12 @@ class AdapterCoins : ListAdapter<CoinDto, AdapterCoins.ViewHolder>(DIFF_CALLBACK
             Glide.with(binding.root)
                 .load(x.type) // ?????????????????
                 .into(binding.ivCoinItem)
+        }
+
+        init {
+            binding.root.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
         }
     }
 
