@@ -9,9 +9,10 @@
     android:padding="16dp"
     android:orientation="horizontal">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_coinItem"
         android:layout_width="50dp"
+        android:scaleType="centerCrop"
         android:layout_height="50dp"
         android:layout_marginRight="4dp"
         tools:srcCompat="@drawable/ic_money_24" />

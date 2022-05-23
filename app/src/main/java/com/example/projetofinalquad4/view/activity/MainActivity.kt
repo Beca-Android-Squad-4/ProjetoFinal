@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.databinding.ActivityMainBinding
-import com.example.projetofinalquad4.view.fragment.FavoritesFragment
 import com.example.projetofinalquad4.view.fragment.CoinsFragment
+import com.example.projetofinalquad4.view.fragment.FavoritesFragment
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(binding.navFragment.id,fragment)
+        fragmentTransaction.replace(binding.navFragment.id, fragment)
         fragmentTransaction.commit()
     }
 }
