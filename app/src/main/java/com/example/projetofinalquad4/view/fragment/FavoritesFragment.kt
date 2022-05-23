@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.projetofinalquad4.viewModel.FavoritesViewModel
 import com.example.projetofinalquad4.R
+import com.example.projetofinalquad4.viewModel.FavoritesViewModel
 
 class FavoritesFragment : Fragment() {
 

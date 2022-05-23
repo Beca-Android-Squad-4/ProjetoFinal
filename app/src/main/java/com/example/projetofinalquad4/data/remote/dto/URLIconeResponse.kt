@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class IconTrocasResponse(
+class URLIconeResponse(
     @SerializedName("results")
-    val coins: List<CoinDetails>
+    val coins: List<URLIcone>
 
 ) : Parcelable {
     constructor() : this(mutableListOf())
