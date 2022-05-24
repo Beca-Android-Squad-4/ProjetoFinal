@@ -33,12 +33,16 @@ class AdapterCoins : ListAdapter<CoinDto, AdapterCoins.ViewHolder>(DIFF_CALLBACK
 
     class ViewHolder(private val binding: ItemCoinBinding, listener: onItemClickListener) : RecyclerView.ViewHolder(binding.root) {
         fun bind(x: CoinDto) {
-            binding.tvCoinSymbolItem.text = x.symbol
+            // binding.tvCoinSymbolItem.text = x.symbol
+            // binding.tvCoinNameItem.text = x.name
+            // binding.tvCoinPriceItem.text = x.rank.toString()
+
+            binding.tvCoinSymbolItem.text = x.asset_id
             binding.tvCoinNameItem.text = x.name
-            binding.tvCoinPriceItem.text = x.rank.toString()
+            binding.tvCoinPriceItem.text = x.price_usd.toString()
 
             Glide.with(binding.root)
-                .load(x.type) // ?????????????????
+                .load(x.icon) // ?????????????????
                 .into(binding.ivCoinItem)
         }
 
@@ -52,7 +56,8 @@ class AdapterCoins : ListAdapter<CoinDto, AdapterCoins.ViewHolder>(DIFF_CALLBACK
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CoinDto>() {
             override fun areItemsTheSame(oldItem: CoinDto, newItem: CoinDto): Boolean {
-                return oldItem.id == newItem.id
+                // return oldItem.id == newItem.id
+                return oldItem.asset_id == newItem.asset_id
             }
 
             override fun areContentsTheSame(oldItem: CoinDto, newItem: CoinDto): Boolean {

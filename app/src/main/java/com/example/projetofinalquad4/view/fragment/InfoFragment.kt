@@ -8,9 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.viewModel.DetailsViewModel
-import com.example.projetofinalquad4.viewModel.FavoritesViewModel
 
-class InfoFragment: Fragment() {
+class InfoFragment : Fragment() {
     companion object {
         fun newInstance() = InfoFragment()
     }
