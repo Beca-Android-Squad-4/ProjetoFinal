@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primaryColor_splashAndDatails">#8C975B</color>
+    <color name="primaryColor_splashAndDatails">#FF8D9562</color>
     <color name="secundaryColor_itemFavorite">#9EA96D</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
@@ -15,6 +15,6 @@
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
     <color name="bg_fragment">#191919</color>
-    <color name="bg_title">#191917</color>
+    <color name="bg_title">#191819</color>
     <color name="bg_navBar">#181619</color>
 </resources>

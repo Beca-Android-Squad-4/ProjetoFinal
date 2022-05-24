@@ -2,7 +2,6 @@ package com.example.projetofinalquad4.view.fragment
 
 import android.os.Bundle
 import android.util.Log
-import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

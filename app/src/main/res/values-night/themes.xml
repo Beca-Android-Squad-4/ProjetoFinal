@@ -12,7 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
 
     <style name="Theme.MainFrag" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -27,10 +28,12 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
     <style name="ThemeOverlay.ProjetoFinalQuad4.FullscreenContainer" parent="">
         <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
         <item name="fullscreenTextColor">@color/light_blue_A400</item>
     </style>
+
 </resources>

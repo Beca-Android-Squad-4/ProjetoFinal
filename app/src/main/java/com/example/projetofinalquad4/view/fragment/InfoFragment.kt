@@ -6,23 +6,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.projetofinalquad4.R
+import com.example.projetofinalquad4.databinding.InfoFragmentBinding
 import com.example.projetofinalquad4.viewModel.DetailsViewModel
-import com.example.projetofinalquad4.viewModel.FavoritesViewModel
 
-class InfoFragment: Fragment() {
+class InfoFragment : Fragment() {
     companion object {
         fun newInstance() = InfoFragment()
     }
 
     private lateinit var viewModel: DetailsViewModel
+    private var _binding: InfoFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.info_fragment, container, false)
+        _binding = InfoFragmentBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -30,4 +34,10 @@ class InfoFragment: Fragment() {
         viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
         // TODO: Use the ViewModel
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 }
