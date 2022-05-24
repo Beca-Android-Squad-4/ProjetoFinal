@@ -1,20 +1,24 @@
 package com.example.projetofinalquad4.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
+import com.example.projetofinalquad4.data.remote.dto.CoinDto
+import com.example.projetofinalquad4.data.remote.dto.mockCoinDto
 import com.example.projetofinalquad4.databinding.InfoFragmentBinding
-import com.example.projetofinalquad4.viewModel.DetailsViewModel
+import com.example.projetofinalquad4.viewModel.MainViewModel
 
 class InfoFragment : Fragment() {
     companion object {
         fun newInstance() = InfoFragment()
     }
 
-    private lateinit var viewModel: DetailsViewModel
+    private val viewModel: MainViewModel by activityViewModels()
+    private lateinit var adapter: InfoAdapter
     private var _binding: InfoFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -26,18 +30,36 @@ class InfoFragment : Fragment() {
         _binding = InfoFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        setupAdapter()
+
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun setupAdapter() {
+        adapter = InfoAdapter()
+        binding.recyclerView.adapter = adapter
+
+        getData()
+    }
+
+    private fun getData() {
+
+        viewModel.coinDtoId.observe(viewLifecycleOwner) { coinId ->
+            Log.d("CoinRecive", "onActivityCreated: $coinId")
+            if (coinId.isNotEmpty()) {
+                binding.tvCoinName.text = coinId
+                listOf(setListAdapter(mockCoinDto().filter { it.id.equals(coinId) }))
+            }
+        }
+    }
+
+    private fun setListAdapter(list: List<CoinDto>) {
+        adapter.submitList(list)
+        adapter.notifyDataSetChanged()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
 }

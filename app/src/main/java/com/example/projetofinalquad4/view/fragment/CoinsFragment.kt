@@ -1,12 +1,13 @@
 package com.example.projetofinalquad4.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.data.remote.dto.CoinDto
@@ -21,7 +22,7 @@ class CoinsFragment : Fragment() {
         fun newInstance() = CoinsFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by activityViewModels()
     private lateinit var adapter: AdapterCoins
     private lateinit var listResponse: MutableList<CoinDto>
     private var _binding: MainFragmentBinding? = null
@@ -45,7 +46,7 @@ class CoinsFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.searchView.clearFocus()
                 newList = Helpers.FilterListQuery(query, list)
-                Log.d("QuerySubmit", "onQueryTextSubmit: $newList")
+                // Log.d("QuerySubmit", "onQueryTextSubmit: $newList")
                 setlistQueryAdapter(newList)
                 return true
             }
@@ -53,7 +54,7 @@ class CoinsFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 // binding.searchView.clearFocus()
                 newList = Helpers.FilterListQuery(newText, list)
-                Log.d("QuerySubmit", "onQueryTextSubmit: $newList")
+                // Log.d("QuerySubmit", "onQueryTextSubmit: $newList")
                 setlistQueryAdapter(newList)
                 return true
             }
@@ -93,21 +94,16 @@ class CoinsFragment : Fragment() {
     private fun setListAdapter(list: List<CoinDto>) {
         adapter.submitList(list)
         adapter.notifyDataSetChanged()
-        adapter.onItemClickListener(object : AdapterCoins.onItemClickListener {
-            override fun onItemClick(position: Int) {
-                Helpers.ToastText("Item clicado: $position", requireContext())
-
-                replaceFragment(InfoFragment())
-            }
-        })
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
         setupSearchView(listResponse)
-        // TODO: Use the ViewModel
+
+        adapter.onClickListener = { coinId ->
+            viewModel.SetListCoins(coinId)
+            replaceFragment(InfoFragment())
+        }
     }
 
     override fun onDestroyView() {
@@ -119,6 +115,7 @@ class CoinsFragment : Fragment() {
         val fragmentManager = activity?.supportFragmentManager
         val fragmentTransaction = fragmentManager?.beginTransaction()
         fragmentTransaction?.replace(R.id.nav_fragment, fragment)
+        fragmentTransaction?.addToBackStack(null)
         fragmentTransaction?.commit()
     }
 }
