@@ -2,6 +2,7 @@ package com.example.projetofinalquad4.view.fragment
 
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,8 +36,6 @@ class CoinsFragment : Fragment() {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         setupUi()
-
-//        setupSearchView(listResponse)
 
         return view
     }
@@ -99,8 +98,7 @@ class CoinsFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 Helpers.ToastText("Item clicado: $position", requireContext())
 
-                // TODO BOTA AQUI O FRAGMENT
-                // replaceFragment(datailsFragment)
+                replaceFragment(InfoFragment())
             }
         })
     }

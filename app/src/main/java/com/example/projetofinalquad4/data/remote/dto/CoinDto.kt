@@ -18,7 +18,7 @@ fun mockCoinDto() = listOf(
         "Bitcoin",
         51,
         "BTC",
-        "https://media.istockphoto.com/vectors/bitcoin-sign-icon-for-internet-money-crypto-currency-symbol-and-coin-vector-id912885640?k=20&m=912885640&s=170667a&w=0&h=mTXiKykLdQnEZ77HJ_IA85hpGODDi-Nh_1e6rP2WWe4=",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/4caf2b16a0174e26a3482cea69c34cba",
     ),
     CoinDto(
         "4131",
@@ -26,17 +26,116 @@ fun mockCoinDto() = listOf(
         true,
         "Metacoin",
         531,
-        "MTC",
-        "https://s2.coinmarketcap.com/static/img/coins/200x200/6498.png",
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "41",
+        true,
+        true,
+        "Logcatu",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "441",
+        true,
+        true,
+        "Turiuba",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "2",
+        true,
+        true,
+        "Tupoia",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "51",
+        true,
+        true,
+        "Lambisgoia",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "988",
+        true,
+        true,
+        "Xiro",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "5",
+        true,
+        true,
+        "Lugx",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "6",
+        true,
+        true,
+        "LUTADOR",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "9",
+        true,
+        true,
+        "Lovely",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "0",
+        true,
+        true,
+        "popo",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "6",
+        true,
+        true,
+        "Sao paulo",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
+    ),
+    CoinDto(
+        "414",
+        true,
+        true,
+        "hce",
+        531,
+        "USD",
+        "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/0a4185f21a034a7cb866ba7076d8c73b.png",
     )
 )
 
-/*fun CoinDto.toCoin(): Coin {
-    return Coin(
-        id = id,
-        is_active = is_active,
-        name = name,
-        rank = rank,
-        symbol = symbol
-    )
-}*/
+// fun CoinDto.toCoin(): Coin {
+//    return Coin(
+//        id = id,
+//        is_active = is_active,
+//        name = name,
+//        rank = rank,
+//        symbol = symbol
+//    )
+// }
