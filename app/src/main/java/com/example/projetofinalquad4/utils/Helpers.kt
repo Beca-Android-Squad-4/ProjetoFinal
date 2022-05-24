@@ -18,7 +18,7 @@ class Helpers {
             var newList: MutableList<CoinDto> = ArrayList()
             list.forEach {
                 if (it.name.contains(text.toString(), true)
-                    //or it.symbol.contains(text.toString(), false)
+                    // or it.symbol.contains(text.toString(), false)
                     or it.icon.contains(text.toString(), false)
                 ) {
                     newList.add(it)
