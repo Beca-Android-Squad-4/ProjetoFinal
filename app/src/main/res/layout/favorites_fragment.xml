@@ -8,116 +8,31 @@
     android:background="@color/bg_fragment"
     tools:context=".view.fragment.CoinsFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
+    <include
+        android:id="@+id/include"
+        layout="@layout/title_main"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/bg_title"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/tv_mainTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Moeda Digital"
-                android:textSize="22sp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_mainDate"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-            <TextView
-                android:id="@+id/tv_mainDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4 jan 2020"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_mainTitle" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/include2"
+        android:id="@+id/include3"
         layout="@layout/divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/bg_fragment"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="58dp">
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include3" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical|center_horizontal|right|left"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="32dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="58dp">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical|center_horizontal|right|left"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="32dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="255dp">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical|center_horizontal|right|left"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="32dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="255dp">
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical|center_horizontal|right|left"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="32dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

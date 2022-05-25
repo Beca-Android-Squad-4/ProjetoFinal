@@ -20,30 +20,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bg_title"
-            android:paddingBottom="8dp">
+            android:paddingBottom="8dp"
+            >
 
-            <TextView
-                android:id="@+id/tv_mainTitle"
+            <include
+                android:id="@+id/include"
+                layout="@layout/title_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Moeda Digital"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_mainDate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-            <TextView
-                android:id="@+id/tv_mainDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4 jan 2020"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@+id/searchView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_mainTitle" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
@@ -54,7 +41,7 @@
                 android:queryHint="Search..."
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_mainDate">
+                app:layout_constraintTop_toBottomOf="@+id/include">
 
             </androidx.appcompat.widget.SearchView>
 

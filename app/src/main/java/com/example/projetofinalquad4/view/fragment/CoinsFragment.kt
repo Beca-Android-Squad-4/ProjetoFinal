@@ -17,10 +17,6 @@ import com.example.projetofinalquad4.viewModel.MainViewModel
 
 class CoinsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CoinsFragment()
-    }
-
     private lateinit var viewModel: MainViewModel
     private lateinit var adapter: AdapterCoins
     private lateinit var listResponse: MutableList<CoinDto>
