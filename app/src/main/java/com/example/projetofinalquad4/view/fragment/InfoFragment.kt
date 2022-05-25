@@ -13,9 +13,6 @@ import com.example.projetofinalquad4.databinding.InfoFragmentBinding
 import com.example.projetofinalquad4.viewModel.MainViewModel
 
 class InfoFragment : Fragment() {
-    companion object {
-        fun newInstance() = InfoFragment()
-    }
 
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var adapter: InfoAdapter
