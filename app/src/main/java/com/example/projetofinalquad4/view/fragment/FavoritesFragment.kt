@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetofinalquad4.data.remote.dto.mockCoinDto
 import com.example.projetofinalquad4.databinding.FavoritesFragmentBinding
+import com.example.projetofinalquad4.utils.Helpers
 import com.example.projetofinalquad4.viewModel.FavoritesViewModel
 
 class FavoritesFragment : Fragment() {
@@ -26,6 +27,7 @@ class FavoritesFragment : Fragment() {
     ): View? {
         _binding = FavoritesFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
+        binding.include.tvMainDate.text = Helpers.GetCalendarDate()
 
         setupAdapter()
 
