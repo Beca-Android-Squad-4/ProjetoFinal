@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.data.remote.dto.CoinDto
 import com.example.projetofinalquad4.data.remote.dto.mockCoinDto
@@ -17,10 +15,6 @@ import com.example.projetofinalquad4.utils.Helpers
 import com.example.projetofinalquad4.viewModel.MainViewModel
 
 class CoinsFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = CoinsFragment()
-    }
 
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var adapter: AdapterCoins
@@ -71,7 +65,7 @@ class CoinsFragment : Fragment() {
     }
 
     private fun setupUi() {
-        binding.tvMainDate.text = Helpers.GetCalendarDate()
+        binding.include.tvMainDate.text = Helpers.GetCalendarDate()
         configAdapter()
     }
 

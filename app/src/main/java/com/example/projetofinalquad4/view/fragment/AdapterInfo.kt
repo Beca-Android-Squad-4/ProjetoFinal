@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.projetofinalquad4.data.remote.dto.CoinDto
 import com.example.projetofinalquad4.databinding.ItemInfoDatailsBinding
 
-class InfoAdapter : ListAdapter<CoinDto, InfoAdapter.ViewHolder>(DIFF_CALLBACK) {
+class AdapterInfo : ListAdapter<CoinDto, AdapterInfo.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
