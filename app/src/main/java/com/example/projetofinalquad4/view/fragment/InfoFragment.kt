@@ -13,12 +13,9 @@ import com.example.projetofinalquad4.databinding.InfoFragmentBinding
 import com.example.projetofinalquad4.viewModel.MainViewModel
 
 class InfoFragment : Fragment() {
-    companion object {
-        fun newInstance() = InfoFragment()
-    }
 
     private val viewModel: MainViewModel by activityViewModels()
-    private lateinit var adapter: InfoAdapter
+    private lateinit var adapter: AdapterInfo
     private var _binding: InfoFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -36,7 +33,7 @@ class InfoFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        adapter = InfoAdapter()
+        adapter = AdapterInfo()
         binding.recyclerView.adapter = adapter
 
         getData()
