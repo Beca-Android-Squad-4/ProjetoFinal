@@ -86,19 +86,19 @@ class CoinsFragment : Fragment() {
         getData()
     }
 
-    private fun getData(callback: (List<CoinItem>)->Unit) {
+    private fun getData() {
         // Aqui será usado o viewModel
         // listResponse = mockCoinDto().toMutableList()
-        //setListAdapter(listResponse)
+        // setListAdapter(listResponse)
         val apiInterface = RetrofitInstance.get().create(IconsInterface::class.java)
-        apiInterface.getData().enqueue(object: Callback<List<CoinItem>?>{
+        apiInterface.getData().enqueue(object : Callback<List<CoinItem>?> {
             override fun onResponse(
                 call: Call<List<CoinItem>?>,
                 response: Response<List<CoinItem>?>,
             ) {
                 val responseBody = response.body()!!
-                callback(responseBody)
-
+                // callback(responseBody)
+                Log.d("responseRetrofit", "onRespone: $responseBody")
             }
             override fun onFailure(call: Call<List<CoinItem>?>, t: Throwable) {
                 Log.d("responseRetrofit", "onResponse: ${t.message}")
@@ -114,7 +114,7 @@ class CoinsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setupSearchView(listResponse)
+        //setupSearchView(listResponse)
 
         adapter.onClickListener = { coinId ->
             viewModel.SetListCoins(coinId)

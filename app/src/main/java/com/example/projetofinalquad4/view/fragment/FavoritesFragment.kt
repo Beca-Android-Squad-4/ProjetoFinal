@@ -44,7 +44,7 @@ class FavoritesFragment : Fragment() {
 
         binding.recyclerViewFavorites.adapter = adapter
 
-        adapter.submitList(mockCoinDto())
+        //adapter.submitList(mockCoinDto())
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

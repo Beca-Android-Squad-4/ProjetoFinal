@@ -13,10 +13,6 @@ class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBAC
 
     var onClickListener: ((coinId: String) -> Unit)? = null
 
-    interface onItemClickListener {
-        fun onItemClick(position: Int)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemCoinBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 

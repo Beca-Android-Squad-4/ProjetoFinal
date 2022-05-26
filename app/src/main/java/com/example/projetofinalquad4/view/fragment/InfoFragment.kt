@@ -45,7 +45,8 @@ class InfoFragment : Fragment() {
             Log.d("CoinRecive", "onActivityCreated: $coinId")
             if (coinId.isNotEmpty()) {
                 binding.tvCoinName.text = coinId
-                listOf(setListAdapter(mockCoinDto().filter { it.id.equals(coinId) }))
+
+            //listOf(setListAdapter(mockCoinDto().filter { it.id.equals(coinId) }))
             }
         }
     }
