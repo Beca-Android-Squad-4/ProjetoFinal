@@ -15,9 +15,7 @@ import com.example.projetofinalquad4.networkUtils.IconsInterface
 import com.example.projetofinalquad4.networkUtils.RetrofitInstance
 import com.example.projetofinalquad4.utils.Helpers
 import com.example.projetofinalquad4.viewModel.MainViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import retrofit2.*
 
 class CoinsFragment : Fragment() {
 
@@ -84,6 +82,7 @@ class CoinsFragment : Fragment() {
         binding.rvMainCoins.adapter = adapter
 
         getData()
+        getSymbol()
     }
 
     private fun getData() {
@@ -106,6 +105,23 @@ class CoinsFragment : Fragment() {
         })
     }
 
+    private fun getSymbol() {
+        val apiInterface = RetrofitInstance.get().create(IconsInterface::class.java)
+        apiInterface.getSymbol().enqueue(object : Callback<List<SymbolCoinItem>?> {
+            override fun onResponse(
+                call: Call<List<SymbolCoinItem>?>,
+                response: Response<List<SymbolCoinItem>?>,
+            ) {
+                val responseBody2 = response.body()
+                Log.d("responseRetrofit", "onRespone: $responseBody2")
+            }
+
+            override fun onFailure(call: Call<List<SymbolCoinItem>?>, t: Throwable) {
+                Log.d("responseRetrofit", "onResponse: ${t.message}")
+            }
+        })
+    }
+
     // private fun setListAdapter(list: List<CoinDto>) {
     private fun setListAdapter(list: List<CoinItem>) {
         adapter.submitList(list)
@@ -114,7 +130,7 @@ class CoinsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //setupSearchView(listResponse)
+        // setupSearchView(listResponse)
 
         adapter.onClickListener = { coinId ->
             viewModel.SetListCoins(coinId)
