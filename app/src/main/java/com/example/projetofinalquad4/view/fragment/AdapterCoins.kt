@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.databinding.ItemCoinBinding
 
@@ -29,7 +30,13 @@ class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBAC
 
         fun bind(x: CoinItem) {
             binding.tvCoinNameItem.text = x.name
+            binding.tvCoinSymbolItem.text = x.asset_id
             binding.tvCoinPriceItem.text = x.price_usd.toString()
+
+            Glide.with(binding.root.context)
+                .load(x.icon_url)
+                .centerCrop()
+                .into(binding.ivCoinItem)
 
             binding.root.setOnClickListener {
                 onClickListener?.invoke(x.asset_id)

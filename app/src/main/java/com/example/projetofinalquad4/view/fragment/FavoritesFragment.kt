@@ -5,15 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projetofinalquad4.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.databinding.FavoritesFragmentBinding
 import com.example.projetofinalquad4.utils.Helpers
+import com.example.projetofinalquad4.view.viewModel.MainViewModel
 
 class FavoritesFragment : Fragment() {
 
-    //private lateinit var viewModel: FavoritesViewModel
+    private val viewModel: MainViewModel by activityViewModels() { Helpers.getMainViewModelFactory() }
     private lateinit var adapter: AdapterFavorites
     private var _binding: FavoritesFragmentBinding? = null
     private val binding get() = _binding!!
@@ -42,11 +44,14 @@ class FavoritesFragment : Fragment() {
 
         binding.recyclerViewFavorites.adapter = adapter
 
-        //adapter.submitList(mockCoinDto())
+        viewModel.coinItem.observe(viewLifecycleOwner){ listCoins->
+            getFavorites(listCoins)
+        }
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        //viewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
+    private fun getFavorites(list: List<CoinItem>?) {
+        adapter.submitList(list)
     }
+
 }

@@ -1,6 +1,5 @@
 package com.example.projetofinalquad4.view.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,26 +13,31 @@ class MainViewModel(
     private val iCoinsRepository: ICoinsRepository
 ) : ViewModel() {
     // Pass Coin between fragments
-    private val _coinsDto = MutableLiveData<String>()
-    val coinDtoId: LiveData<String> = _coinsDto
+    // Essa é a moeda escolhida no CoinsFragment que será utilizada no InfoFragment
+    private val _coinSelected = MutableLiveData<CoinItem>()
+    val coinSelected: LiveData<CoinItem> = _coinSelected
 
     private val _coinsItem = MutableLiveData<List<CoinItem>>()
     val coinItem: LiveData<List<CoinItem>> = _coinsItem
 
-    fun SetListCoins(coinId: String) {
+    fun setCoin(coinId: String) {
         viewModelScope.launch {
-            _coinsDto.value = coinId
-            Log.d("CoinSet", "onActivityCreated: $coinDtoId")
+            _coinSelected.value = coinItem.value?.find { it.asset_id == coinId }
         }
     }
 
     fun getCoinsFromRetrofit() {
         viewModelScope.launch {
             var result = iCoinsRepository.getCoins()
-            Log.d("responseRetrofit", "getData: $result")
+            // Log.d("responseRetrofit", "getData: $result")
+            // Log.d("responseRetrofit", "getData: ${result.find { it.name.contains("Yuan") }}")
 
-            _coinsItem.value = setIconUrl(result)
+            _coinsItem.value = setIconUrl(getOnlyCrypto(result))
         }
+    }
+
+    private fun getOnlyCrypto(list: List<CoinItem>): List<CoinItem> {
+        return list.filter { it.type_is_crypto == Constants.TYPE_IS_CRYPTO }
     }
 
     private fun setIconUrl(list: List<CoinItem>): List<CoinItem> {

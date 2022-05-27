@@ -1,7 +1,6 @@
 package com.example.projetofinalquad4.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,23 +8,14 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.projetofinalquad4.R
-import com.example.projetofinalquad4.data.remote.ICoinsClient
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
-import com.example.projetofinalquad4.data.repository.CoinsRepository
 import com.example.projetofinalquad4.databinding.MainFragmentBinding
-import com.example.projetofinalquad4.networkUtils.RetrofitInstance
 import com.example.projetofinalquad4.utils.Helpers
 import com.example.projetofinalquad4.view.viewModel.MainViewModel
-import com.example.projetofinalquad4.view.viewModel.MainViewModelFactory
 
 class CoinsFragment : Fragment() {
 
-    private val coinsClient: ICoinsClient by lazy {
-        RetrofitInstance.get().create(ICoinsClient::class.java)
-    }
-    private val coinsRepository = CoinsRepository(coinsClient)
-    private val mainViewModelFactory = MainViewModelFactory(coinsRepository)
-    private val viewModel: MainViewModel by activityViewModels() { mainViewModelFactory }
+    private val viewModel: MainViewModel by activityViewModels() { Helpers.getMainViewModelFactory() }
 
     private lateinit var adapter: AdapterCoins
     private lateinit var listResponse: MutableList<CoinItem>
@@ -94,7 +84,7 @@ class CoinsFragment : Fragment() {
 
         viewModel.getCoinsFromRetrofit()
         viewModel.coinItem.observe(viewLifecycleOwner) { listCoins ->
-            Log.d("responseRetrofit", "getData: $listCoins")
+            // Log.d("responseRetrofit", "getData: $listCoins")
             setListAdapter(listCoins)
         }
     }
@@ -109,7 +99,7 @@ class CoinsFragment : Fragment() {
         // setupSearchView(listResponse)
 
         adapter.onClickListener = { coinId ->
-            viewModel.SetListCoins(coinId)
+            viewModel.setCoin(coinId)
             replaceFragment(InfoFragment())
         }
     }

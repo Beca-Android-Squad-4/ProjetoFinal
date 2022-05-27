@@ -2,7 +2,11 @@ package com.example.projetofinalquad4.utils
 
 import android.content.Context
 import android.widget.Toast
+import com.example.projetofinalquad4.data.remote.ICoinsClient
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
+import com.example.projetofinalquad4.data.repository.CoinsRepository
+import com.example.projetofinalquad4.networkUtils.RetrofitInstance
+import com.example.projetofinalquad4.view.viewModel.MainViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -33,6 +37,14 @@ class Helpers {
             // val currentTime: Date = Calendar.getInstance().getTime()
 
             return SimpleDateFormat("d MMM yyyy", Locale.getDefault()).format(Date())
+        }
+
+        fun getMainViewModelFactory(): MainViewModelFactory {
+            val coinsClient: ICoinsClient by lazy {
+                RetrofitInstance.get().create(ICoinsClient::class.java)
+            }
+            val coinsRepository = CoinsRepository(coinsClient)
+            return MainViewModelFactory(coinsRepository)
         }
 
 //        fun replaceFragment(fragment: Fragment){
