@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.databinding.ItemFavoritesBinding
-
-// class AdapterFavorites : ListAdapter<CoinDto, AdapterFavorites.ViewHolder>(DIFF_CALLBACK) {
 
 class AdapterFavorites : ListAdapter<CoinItem, AdapterFavorites.ViewHolder>(DIFF_CALLBACK) {
 
@@ -26,27 +25,24 @@ class AdapterFavorites : ListAdapter<CoinItem, AdapterFavorites.ViewHolder>(DIFF
     class ViewHolder(val binding: ItemFavoritesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-       /* fun bind(x: CoinDto) {
-            binding.tvNameFavorite.text = x.name
-            binding.tvPriceFavorite.text = x.rank.toString()
-        }*/
-
         fun bind(x: CoinItem) {
-            binding.tvNameFavorite.text = x.name
+            binding.tvNameFavorite.text = x.asset_id
+            binding.tvNameAbrevietedFavorite.text = x.name
             binding.tvPriceFavorite.text = x.price_usd.toString()
+
+            Glide.with(binding.root.context)
+                .load(x.icon_url)
+                .centerCrop()
+                .into(binding.imageView3)
         }
     }
 
     companion object {
-        // private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CoinDto>() {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CoinItem>() {
-            // override fun areItemsTheSame(oldItem: CoinDto, newItem: CoinDto): Boolean {
             override fun areItemsTheSame(oldItem: CoinItem, newItem: CoinItem): Boolean {
-                // return oldItem.id == oldItem.id
                 return oldItem.asset_id == oldItem.asset_id
             }
 
-            // override fun areContentsTheSame(oldItem: CoinDto, newItem: CoinDto): Boolean {
             override fun areContentsTheSame(oldItem: CoinItem, newItem: CoinItem): Boolean {
                 return oldItem == oldItem
             }
