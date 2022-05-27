@@ -1,5 +1,6 @@
 package com.example.projetofinalquad4.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -85,6 +86,10 @@ class CoinsFragment : Fragment() {
         viewModel.getCoinsFromRetrofit()
         viewModel.coinItem.observe(viewLifecycleOwner) { listCoins ->
             // Log.d("responseRetrofit", "getData: $listCoins")
+            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@observe
+            listCoins.forEach { coin ->
+                if (sharedPref.all.containsKey(coin.asset_id)) coin.isFavorite = true
+            }
             setListAdapter(listCoins)
         }
     }

@@ -18,5 +18,6 @@ data class CoinItem(
     val volume_1hrs_usd: Double,
     val volume_1mth_usd: Double,
     val price_usd: Double,
-    var icon_url: String
+    var icon_url: String,
+    var isFavorite: Boolean = false
 )

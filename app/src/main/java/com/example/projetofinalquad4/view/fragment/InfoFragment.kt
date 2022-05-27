@@ -1,5 +1,6 @@
 package com.example.projetofinalquad4.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -43,6 +44,15 @@ class InfoFragment : Fragment() {
     private fun getData() {
 
         viewModel.coinSelected.observe(viewLifecycleOwner) { coin ->
+            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@observe
+            if (sharedPref.all.containsKey(coin.asset_id)) {
+                binding.ivFavorite.visibility = View.VISIBLE
+                binding.btnAddFavorite.text = "REMOVER"
+            } else {
+                binding.ivFavorite.visibility = View.GONE
+                binding.btnAddFavorite.text = "ADICIONAR"
+            }
+
             Log.d("CoinRecive", "onActivityCreated: $coin")
             binding.tvCoinName.text = coin.name
             binding.tvCoinPrice.text = coin.price_usd.toString()
@@ -54,6 +64,23 @@ class InfoFragment : Fragment() {
                 .load(coin.icon_url)
                 .centerCrop()
                 .into(binding.imageView)
+
+            binding.btnAddFavorite.setOnClickListener {
+                when (coin.isFavorite) {
+                    true -> { // Vai remover dos favoritos
+                        sharedPref.edit().remove(coin.asset_id).apply()
+                        viewModel.setFavorite(false)
+                        binding.btnAddFavorite.text = "ADICIONAR"
+                        binding.ivFavorite.visibility = View.GONE
+                    }
+                    false -> { // Vai adicionar aos favoritos
+                        sharedPref.edit().putString(coin.asset_id, coin.asset_id).apply()
+                        viewModel.setFavorite(true)
+                        binding.btnAddFavorite.text = "REMOVER"
+                        binding.ivFavorite.visibility = View.VISIBLE
+                    }
+                }
+            }
         }
     }
 

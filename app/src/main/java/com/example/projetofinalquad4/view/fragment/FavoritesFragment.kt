@@ -1,6 +1,8 @@
 package com.example.projetofinalquad4.view.fragment
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +17,7 @@ import com.example.projetofinalquad4.view.viewModel.MainViewModel
 
 class FavoritesFragment : Fragment() {
 
-    private val viewModel: MainViewModel by activityViewModels() { Helpers.getMainViewModelFactory() }
+    private val viewModel: MainViewModel by activityViewModels { Helpers.getMainViewModelFactory() }
     private lateinit var adapter: AdapterFavorites
     private var _binding: FavoritesFragmentBinding? = null
     private val binding get() = _binding!!
@@ -44,14 +46,27 @@ class FavoritesFragment : Fragment() {
 
         binding.recyclerViewFavorites.adapter = adapter
 
-        viewModel.coinItem.observe(viewLifecycleOwner){ listCoins->
+        viewModel.coinItem.observe(viewLifecycleOwner) { listCoins ->
             getFavorites(listCoins)
         }
-
     }
 
-    private fun getFavorites(list: List<CoinItem>?) {
-        adapter.submitList(list)
-    }
+    private fun getFavorites(list: List<CoinItem>) {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        Log.d("ListFavorites", "getFavorites: ${sharedPref.all}")
+        val tempList: MutableList<CoinItem> = ArrayList()
+        list.forEach {
+            if (sharedPref.all.contains(it.asset_id)){
+                tempList.add(it)
+            }
+        }
+        Log.d(
+            "ListFilter",
+            "getFavorites: $tempList"
+        )
+        // val defaultValue = resources.getInteger()
 
+        adapter.submitList(tempList)
+        // val highScore = sharedPref.getInt(, defaultValue)
+    }
 }
