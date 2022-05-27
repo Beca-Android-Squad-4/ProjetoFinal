@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
-import com.example.projetofinalquad4.data.remote.dto.mockCoinDto
 import com.example.projetofinalquad4.databinding.InfoFragmentBinding
-import com.example.projetofinalquad4.viewModel.MainViewModel
+import com.example.projetofinalquad4.view.viewModel.MainViewModel
 
 class InfoFragment : Fragment() {
 

@@ -3,7 +3,6 @@ package com.example.projetofinalquad4.utils
 import android.content.Context
 import android.widget.Toast
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
-import com.example.projetofinalquad4.data.remote.dto.SymbolCoinItem
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList

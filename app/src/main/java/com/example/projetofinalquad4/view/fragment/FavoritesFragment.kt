@@ -8,14 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.projetofinalquad4.data.remote.dto.mockCoinDto
 import com.example.projetofinalquad4.databinding.FavoritesFragmentBinding
 import com.example.projetofinalquad4.utils.Helpers
-import com.example.projetofinalquad4.viewModel.FavoritesViewModel
 
 class FavoritesFragment : Fragment() {
 
-    private lateinit var viewModel: FavoritesViewModel
+    //private lateinit var viewModel: FavoritesViewModel
     private lateinit var adapter: AdapterFavorites
     private var _binding: FavoritesFragmentBinding? = null
     private val binding get() = _binding!!
@@ -49,6 +47,6 @@ class FavoritesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
     }
 }

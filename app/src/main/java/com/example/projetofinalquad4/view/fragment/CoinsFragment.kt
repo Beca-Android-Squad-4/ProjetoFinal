@@ -9,19 +9,25 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.projetofinalquad4.R
-import com.example.projetofinalquad4.data.remote.dto.*
+import com.example.projetofinalquad4.data.remote.ICoinsClient
+import com.example.projetofinalquad4.data.remote.dto.CoinItem
+import com.example.projetofinalquad4.data.repository.CoinsRepository
 import com.example.projetofinalquad4.databinding.MainFragmentBinding
-import com.example.projetofinalquad4.networkUtils.IconsInterface
 import com.example.projetofinalquad4.networkUtils.RetrofitInstance
 import com.example.projetofinalquad4.utils.Helpers
-import com.example.projetofinalquad4.viewModel.MainViewModel
-import retrofit2.*
+import com.example.projetofinalquad4.view.viewModel.MainViewModel
+import com.example.projetofinalquad4.view.viewModel.MainViewModelFactory
 
 class CoinsFragment : Fragment() {
 
-    private val viewModel: MainViewModel by activityViewModels()
+    private val coinsClient: ICoinsClient by lazy {
+        RetrofitInstance.get().create(ICoinsClient::class.java)
+    }
+    private val coinsRepository = CoinsRepository(coinsClient)
+    private val mainViewModelFactory = MainViewModelFactory(coinsRepository)
+    private val viewModel: MainViewModel by activityViewModels() { mainViewModelFactory }
+
     private lateinit var adapter: AdapterCoins
-    // private lateinit var listResponse: MutableList<CoinDto>
     private lateinit var listResponse: MutableList<CoinItem>
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
@@ -82,47 +88,17 @@ class CoinsFragment : Fragment() {
         binding.rvMainCoins.adapter = adapter
 
         getData()
-        getSymbol()
     }
 
     private fun getData() {
-        // Aqui será usado o viewModel
-        // listResponse = mockCoinDto().toMutableList()
-        // setListAdapter(listResponse)
-        val apiInterface = RetrofitInstance.get().create(IconsInterface::class.java)
-        apiInterface.getData().enqueue(object : Callback<List<CoinItem>?> {
-            override fun onResponse(
-                call: Call<List<CoinItem>?>,
-                response: Response<List<CoinItem>?>,
-            ) {
-                val responseBody = response.body()!!
-                // callback(responseBody)
-                Log.d("responseRetrofit", "onRespone: $responseBody")
-            }
-            override fun onFailure(call: Call<List<CoinItem>?>, t: Throwable) {
-                Log.d("responseRetrofit", "onResponse: ${t.message}")
-            }
-        })
+
+        viewModel.getCoinsFromRetrofit()
+        viewModel.coinItem.observe(viewLifecycleOwner) { listCoins ->
+            Log.d("responseRetrofit", "getData: $listCoins")
+            setListAdapter(listCoins)
+        }
     }
 
-    private fun getSymbol() {
-        val apiInterface = RetrofitInstance.get().create(IconsInterface::class.java)
-        apiInterface.getSymbol().enqueue(object : Callback<List<SymbolCoinItem>?> {
-            override fun onResponse(
-                call: Call<List<SymbolCoinItem>?>,
-                response: Response<List<SymbolCoinItem>?>,
-            ) {
-                val responseBody2 = response.body()
-                Log.d("responseRetrofit", "onRespone: $responseBody2")
-            }
-
-            override fun onFailure(call: Call<List<SymbolCoinItem>?>, t: Throwable) {
-                Log.d("responseRetrofit", "onResponse: ${t.message}")
-            }
-        })
-    }
-
-    // private fun setListAdapter(list: List<CoinDto>) {
     private fun setListAdapter(list: List<CoinItem>) {
         adapter.submitList(list)
         adapter.notifyDataSetChanged()
