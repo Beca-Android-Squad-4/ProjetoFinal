@@ -91,6 +91,7 @@ class CoinsFragment : Fragment() {
                 if (sharedPref.all.containsKey(coin.asset_id)) coin.isFavorite = true
             }
             setListAdapter(listCoins)
+            setupSearchView(listCoins)
         }
     }
 
