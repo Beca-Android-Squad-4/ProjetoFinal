@@ -182,6 +182,8 @@
                 android:id="@+id/iv_favorite"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:visibility="gone"
+                tools:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"

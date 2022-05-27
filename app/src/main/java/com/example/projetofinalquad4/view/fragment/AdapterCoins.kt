@@ -1,6 +1,7 @@
 package com.example.projetofinalquad4.view.fragment
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -32,6 +33,11 @@ class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBAC
             binding.tvCoinNameItem.text = x.name
             binding.tvCoinSymbolItem.text = x.asset_id
             binding.tvCoinPriceItem.text = x.price_usd.toString()
+
+            when (x.isFavorite) {
+                true -> binding.ivFavoriteItem.visibility = View.VISIBLE
+                false -> binding.ivFavoriteItem.visibility = View.GONE
+            }
 
             Glide.with(binding.root.context)
                 .load(x.icon_url)

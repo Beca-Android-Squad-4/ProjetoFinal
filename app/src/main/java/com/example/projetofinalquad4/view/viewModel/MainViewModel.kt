@@ -28,11 +28,16 @@ class MainViewModel(
 
     fun getCoinsFromRetrofit() {
         viewModelScope.launch {
-            var result = iCoinsRepository.getCoins()
-            // Log.d("responseRetrofit", "getData: $result")
-            // Log.d("responseRetrofit", "getData: ${result.find { it.name.contains("Yuan") }}")
+            if (_coinsItem.value.isNullOrEmpty()){
+                var result = iCoinsRepository.getCoins()
+                _coinsItem.value = setIconUrl(getOnlyCrypto(result))
+            }
+        }
+    }
 
-            _coinsItem.value = setIconUrl(getOnlyCrypto(result))
+    fun setFavorite(isFavorite: Boolean) {
+        viewModelScope.launch {
+            _coinSelected.value?.isFavorite = isFavorite
         }
     }
 

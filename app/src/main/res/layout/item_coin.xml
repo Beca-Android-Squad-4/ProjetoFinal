@@ -48,6 +48,8 @@
         android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="14dp"
         android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        tools:visibility="visible"
         app:srcCompat="@drawable/ic_star_24"
         app:tint="@color/white" />
 
