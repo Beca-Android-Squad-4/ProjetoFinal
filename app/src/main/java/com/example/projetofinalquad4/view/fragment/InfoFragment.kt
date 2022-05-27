@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
+import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.databinding.InfoFragmentBinding
 import com.example.projetofinalquad4.utils.Helpers
@@ -55,15 +56,22 @@ class InfoFragment : Fragment() {
 
             Log.d("CoinRecive", "onActivityCreated: $coin")
             binding.tvCoinName.text = coin.name
-            binding.tvCoinPrice.text = coin.price_usd.toString()
-            binding.tvPriceHour.text = coin.volume_1hrs_usd.toString()
-            binding.tvPriceDay.text = coin.volume_1day_usd.toString()
-            binding.tvPriceMonth.text = coin.volume_1mth_usd.toString()
+            binding.tvCoinPrice.text = Helpers.formatPriceCoin(coin.price_usd)
+            binding.tvPriceHour.text = Helpers.formatPriceCoin(coin.volume_1hrs_usd)
+            binding.tvPriceDay.text = Helpers.formatPriceCoin(coin.volume_1day_usd)
+            binding.tvPriceMonth.text = Helpers.formatPriceCoin(coin.volume_1mth_usd)
 
-            Glide.with(requireContext())
-                .load(coin.icon_url)
-                .centerCrop()
-                .into(binding.imageView)
+            if (!coin.icon_url.isNullOrEmpty()) {
+                Glide.with(requireContext())
+                    .load(coin.icon_url)
+                    .centerCrop()
+                    .into(binding.imageView)
+            } else {
+                Glide.with(requireContext())
+                    .load(R.drawable.generic_coin)
+                    .centerCrop()
+                    .into(binding.imageView)
+            }
 
             binding.btnAddFavorite.setOnClickListener {
                 when (coin.isFavorite) {

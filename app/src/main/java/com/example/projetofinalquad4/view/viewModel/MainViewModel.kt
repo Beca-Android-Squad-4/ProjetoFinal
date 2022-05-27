@@ -28,7 +28,7 @@ class MainViewModel(
 
     fun getCoinsFromRetrofit() {
         viewModelScope.launch {
-            if (_coinsItem.value.isNullOrEmpty()){
+            if (_coinsItem.value.isNullOrEmpty()) {
                 var result = iCoinsRepository.getCoins()
                 _coinsItem.value = setIconUrl(getOnlyCrypto(result))
             }

@@ -47,6 +47,11 @@ class Helpers {
             return MainViewModelFactory(coinsRepository)
         }
 
+        fun formatPriceCoin(price: Double): String {
+
+            return String.format("$ %.4f", price)
+        }
+
 //        fun replaceFragment(fragment: Fragment){
 //            val fragmentManager = supportFragmentManager
 //            val fragmentTransaction = fragmentManager.beginTransaction()

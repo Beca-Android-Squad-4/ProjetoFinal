@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.databinding.ItemFavoritesBinding
+import com.example.projetofinalquad4.utils.Helpers
 
 class AdapterFavorites : ListAdapter<CoinItem, AdapterFavorites.ViewHolder>(DIFF_CALLBACK) {
 
@@ -26,14 +28,21 @@ class AdapterFavorites : ListAdapter<CoinItem, AdapterFavorites.ViewHolder>(DIFF
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(x: CoinItem) {
-            binding.tvNameFavorite.text = x.asset_id
-            binding.tvNameAbrevietedFavorite.text = x.name
-            binding.tvPriceFavorite.text = x.price_usd.toString()
+            binding.tvNameFavorite.text = x.name
+            binding.tvNameAbrevietedFavorite.text = x.asset_id
+            binding.tvPriceFavorite.text = Helpers.formatPriceCoin(x.price_usd)
 
-            Glide.with(binding.root.context)
-                .load(x.icon_url)
-                .centerCrop()
-                .into(binding.imageView3)
+            if (!x.icon_url.isNullOrEmpty()) {
+                Glide.with(binding.root.context)
+                    .load(x.icon_url)
+                    .centerCrop()
+                    .into(binding.imageView3)
+            } else {
+                Glide.with(binding.root.context)
+                    .load(R.drawable.generic_coin)
+                    .centerCrop()
+                    .into(binding.imageView3)
+            }
         }
     }
 
