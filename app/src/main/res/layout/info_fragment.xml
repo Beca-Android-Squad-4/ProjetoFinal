@@ -173,18 +173,6 @@
                         />
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-
-                    android:layout_marginBottom="128dp"
-                    android:layout_weight="1"
-                    android:padding="16dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_info_datails" />
-
             </LinearLayout>
 
             <ImageView
@@ -193,12 +181,12 @@
                 android:layout_height="32dp"
                 android:visibility="invisible"
                 tools:visibility="visible"
-                android:tint="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/tv_coinName"
-                app:srcCompat="@drawable/ic_star_24" />
+                app:srcCompat="@drawable/ic_star_24"
+                app:tint="@color/white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

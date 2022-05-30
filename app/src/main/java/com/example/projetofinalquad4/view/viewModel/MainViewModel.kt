@@ -19,6 +19,7 @@ class MainViewModel(
     // Pass Coin between fragments
     // Essa é a moeda escolhida no CoinsFragment que será utilizada no InfoFragment
     private val _coinSelected = MutableLiveData<CoinItem>()
+
     // private val _coinSelected = MutableLiveData<CoinApiResult<List<CoinItem>>>()
     val coinSelected: LiveData<CoinItem> = _coinSelected
     // val coinSelected: LiveData<CoinApiResult<List<CoinItem>>> = _coinSelected
@@ -28,8 +29,11 @@ class MainViewModel(
 
     // private val _coinsItem = MutableLiveData<List<CoinItem>>()
     private val _coinsItem = MutableLiveData<CoinApiResult<List<CoinItem>>>()
+
     // val coinItem: LiveData<List<CoinItem>> = _coinsItem
     val coinItem: LiveData<CoinApiResult<List<CoinItem>>> = _coinsItem
+
+    var coinsFromApi: List<CoinItem> = ArrayList()
 
     fun setCoin(coinId: String) {
         viewModelScope.launch {
@@ -37,17 +41,14 @@ class MainViewModel(
             _coinsItem.value = CoinApiResult.Loading()
             // _coinsItem.value = setIconUrl( _coinsItem.value as List<CoinItem>)
             try {
-                val coinsFromApi = withContext(Dispatchers.IO) {
-                    iCoinsRepository.getCoins()
-                }
-                setIconUrl(coinsFromApi)
-                getOnlyCrypto(coinsFromApi)
-                //_coinSelected.value = coinsFromApi.value?.find { it.asset_id == coinId }
-                coinsFromApi.forEach {
-                    if(it.asset_id == coinId){
-                        _coinSelected.value = it
+                if (coinsFromApi.isNullOrEmpty()){
+                    coinsFromApi = withContext(Dispatchers.IO) {
+                        iCoinsRepository.getCoins()
                     }
+                    setIconUrl(coinsFromApi)
+                    getOnlyCrypto(coinsFromApi)
                 }
+                _coinSelected.value = coinsFromApi.find { it.asset_id == coinId }
                 _coinsItem.value = CoinApiResult.Success(coinsFromApi)
             } catch (e: Exception) {
                 val coinResult = CoinApiResult.Error<List<CoinItem>>(e)
@@ -58,20 +59,22 @@ class MainViewModel(
 
     fun getCoinsFromRetrofit() {
         viewModelScope.launch {
-           /* if (_coinsItem.value.isNullOrEmpty()) {
-                var result = iCoinsRepository.getCoins()
-                _coinsItem.value = setIconUrl(getOnlyCrypto(result))
-            }*/
+            /* if (_coinsItem.value.isNullOrEmpty()) {
+                 var result = iCoinsRepository.getCoins()
+                 _coinsItem.value = setIconUrl(getOnlyCrypto(result))
+             }*/
             _coinsItem.value = CoinApiResult.Loading()
 
             // _coinsItem.value = setIconUrl( _coinsItem.value as List<CoinItem>)
 
             try {
-                val coinsFromApi = withContext(Dispatchers.IO) {
-                    iCoinsRepository.getCoins()
+                if (coinsFromApi.isNullOrEmpty()) {
+                    coinsFromApi = withContext(Dispatchers.IO) {
+                        iCoinsRepository.getCoins()
+                    }
+                    setIconUrl(coinsFromApi)
+                    getOnlyCrypto(coinsFromApi)
                 }
-                setIconUrl(coinsFromApi)
-                getOnlyCrypto(coinsFromApi)
                 _coinsItem.value = CoinApiResult.Success(coinsFromApi)
             } catch (e: Exception) {
                 val coinResult = CoinApiResult.Error<List<CoinItem>>(e)
