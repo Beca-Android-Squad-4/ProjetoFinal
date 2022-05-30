@@ -30,7 +30,7 @@ class FavoritesFragment : Fragment() {
     ): View? {
         _binding = FavoritesFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.include.tvMainDate.text = Helpers.GetCalendarDate()
+        // binding.include.tvMainDate.text = Helpers.GetCalendarDate()
 
         setupAdapter()
 
@@ -57,12 +57,16 @@ class FavoritesFragment : Fragment() {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         Log.d("ListFavorites", "getFavorites: ${sharedPref.all}")
         val tempList: MutableList<CoinItem> = ArrayList()
-        list as List<CoinItem>
-        list.forEach {
-            if (sharedPref.all.contains(it.asset_id)) {
-                tempList.add(it)
+        when (list) {
+            is CoinApiResult.Success -> {
+                list.data.forEach {
+                    if (sharedPref.all.contains(it.asset_id)) {
+                        tempList.add(it)
+                    }
+                }
             }
         }
+
         Log.d(
             "ListFilter",
             "getFavorites: $tempList"
