@@ -1,5 +1,6 @@
 package com.example.projetofinalquad4.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -100,6 +101,11 @@ class CoinsFragment : Fragment() {
                 }
                 is CoinApiResult.Success<*> -> {
                     Log.d("INFO", "Success")
+                    val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@observe
+                    listCoins.data as List<CoinItem>
+                    listCoins.data.forEach { coin ->
+                        if (sharedPref.all.containsKey(coin.asset_id)) coin.isFavorite = true
+                    }
                     setListAdapter(listCoins.data as List<CoinItem>)
                     setupSearchView(listCoins.data)
                 }
