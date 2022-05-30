@@ -44,10 +44,17 @@ class MainViewModel(
                 _coinsItem.value = setIconUrl(getOnlyCrypto(result))
             }*/
             _coinsItem.value = CoinApiResult.Loading()
+
+            // _coinsItem.value = setIconUrl( _coinsItem.value as List<CoinItem>)
+
             try {
                 val coinsFromApi = withContext(Dispatchers.IO) {
                     iCoinsRepository.getCoins()
+
                 }
+                setIconUrl(coinsFromApi)
+                getOnlyCrypto(coinsFromApi)
+
                 _coinsItem.value = CoinApiResult.Success(coinsFromApi)
             } catch (e: Exception) {
                 val coinResult = CoinApiResult.Error<List<CoinItem>>(e)

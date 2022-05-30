@@ -56,7 +56,7 @@ class FavoritesFragment : Fragment() {
         Log.d("ListFavorites", "getFavorites: ${sharedPref.all}")
         val tempList: MutableList<CoinItem> = ArrayList()
         list.forEach {
-            if (sharedPref.all.contains(it.asset_id)){
+            if (sharedPref.all.contains(it.asset_id)) {
                 tempList.add(it)
             }
         }
