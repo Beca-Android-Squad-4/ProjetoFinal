@@ -7,7 +7,7 @@ import kotlinx.coroutines.withContext
 
 class CoinsRepository(private val coinsClient: ICoinsClient) : ICoinsRepository {
     override suspend fun getCoins(): List<CoinItem> {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             coinsClient.getData()
         }
     }
