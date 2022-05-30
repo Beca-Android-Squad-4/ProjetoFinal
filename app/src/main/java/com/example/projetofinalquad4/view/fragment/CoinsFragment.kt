@@ -100,7 +100,7 @@ class CoinsFragment : Fragment() {
                 }
                 is CoinApiResult.Success<*> -> {
                     Log.d("INFO", "Success")
-                    setListAdapter(listCoins.data)
+                    setListAdapter(listCoins.data as List<CoinItem>)
                     setupSearchView(listCoins.data)
                 }
                 is CoinApiResult.Error<*> -> {

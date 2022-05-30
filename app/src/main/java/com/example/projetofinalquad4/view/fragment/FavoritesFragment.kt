@@ -47,7 +47,7 @@ class FavoritesFragment : Fragment() {
         binding.recyclerViewFavorites.adapter = adapter
 
         viewModel.coinItem.observe(viewLifecycleOwner) { listCoins ->
-            getFavorites(listCoins)
+            getFavorites(listCoins as List<CoinItem>)
         }
     }
 
