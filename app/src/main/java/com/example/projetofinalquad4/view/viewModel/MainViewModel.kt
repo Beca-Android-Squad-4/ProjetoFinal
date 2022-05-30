@@ -45,8 +45,8 @@ class MainViewModel(
                     coinsFromApi = withContext(Dispatchers.IO) {
                         iCoinsRepository.getCoins()
                     }
-                    setIconUrl(coinsFromApi)
-                    getOnlyCrypto(coinsFromApi)
+                    coinsFromApi = setIconUrl(coinsFromApi)
+                    coinsFromApi = getOnlyCrypto(coinsFromApi)
                 }
                 _coinSelected.value = coinsFromApi.find { it.asset_id == coinId }
                 _coinsItem.value = CoinApiResult.Success(coinsFromApi)
@@ -72,8 +72,8 @@ class MainViewModel(
                     coinsFromApi = withContext(Dispatchers.IO) {
                         iCoinsRepository.getCoins()
                     }
-                    setIconUrl(coinsFromApi)
-                    getOnlyCrypto(coinsFromApi)
+                    coinsFromApi = setIconUrl(coinsFromApi)
+                    coinsFromApi = getOnlyCrypto(coinsFromApi)
                 }
                 _coinsItem.value = CoinApiResult.Success(coinsFromApi)
             } catch (e: Exception) {
