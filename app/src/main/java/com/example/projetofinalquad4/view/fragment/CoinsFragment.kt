@@ -1,7 +1,7 @@
 package com.example.projetofinalquad4.view.fragment
 
-import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.projetofinalquad4.R
+import com.example.projetofinalquad4.data.remote.dto.CoinApiResult
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.databinding.MainFragmentBinding
 import com.example.projetofinalquad4.utils.Helpers
@@ -86,12 +87,26 @@ class CoinsFragment : Fragment() {
         viewModel.getCoinsFromRetrofit()
         viewModel.coinItem.observe(viewLifecycleOwner) { listCoins ->
             // Log.d("responseRetrofit", "getData: $listCoins")
-            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@observe
+           /* val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@observe
             listCoins.forEach { coin ->
                 if (sharedPref.all.containsKey(coin.asset_id)) coin.isFavorite = true
             }
             setListAdapter(listCoins)
-            setupSearchView(listCoins)
+            setupSearchView(listCoins)*/
+
+            when (listCoins) {
+                is CoinApiResult.Loading<*> -> {
+                    Log.d("INFO", "Loading")
+                }
+                is CoinApiResult.Success<*> -> {
+                    Log.d("INFO", "Success")
+                    setListAdapter(listCoins.data)
+                    setupSearchView(listCoins.data)
+                }
+                is CoinApiResult.Error<*> -> {
+                    Log.d("INFO", "Error: ${listCoins.throwable.cause}")
+                }
+            }
         }
     }
 

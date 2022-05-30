@@ -4,10 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.projetofinalquad4.data.remote.dto.CoinApiResult
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.data.repository.ICoinsRepository
 import com.example.projetofinalquad4.utils.Constants
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class MainViewModel(
     private val iCoinsRepository: ICoinsRepository
@@ -15,22 +19,39 @@ class MainViewModel(
     // Pass Coin between fragments
     // Essa é a moeda escolhida no CoinsFragment que será utilizada no InfoFragment
     private val _coinSelected = MutableLiveData<CoinItem>()
+    // private val _coinSelected = MutableLiveData<CoinApiResult<List<CoinItem>>>()
     val coinSelected: LiveData<CoinItem> = _coinSelected
+    // val coinSelected: LiveData<CoinApiResult<List<CoinItem>>> = _coinSelected
 
-    private val _coinsItem = MutableLiveData<List<CoinItem>>()
-    val coinItem: LiveData<List<CoinItem>> = _coinsItem
+    private val _teste = MutableLiveData<List<CoinItem>>()
+    val teste: LiveData<List<CoinItem>> = _teste
+
+    // private val _coinsItem = MutableLiveData<List<CoinItem>>()
+    private val _coinsItem = MutableLiveData<CoinApiResult<List<CoinItem>>>()
+    // val coinItem: LiveData<List<CoinItem>> = _coinsItem
+    val coinItem: LiveData<CoinApiResult<List<CoinItem>>> = _coinsItem
 
     fun setCoin(coinId: String) {
         viewModelScope.launch {
-            _coinSelected.value = coinItem.value?.find { it.asset_id == coinId }
+            _coinSelected.value = teste.value?.find { it.asset_id == coinId }
         }
     }
 
     fun getCoinsFromRetrofit() {
         viewModelScope.launch {
-            if (_coinsItem.value.isNullOrEmpty()) {
+           /* if (_coinsItem.value.isNullOrEmpty()) {
                 var result = iCoinsRepository.getCoins()
                 _coinsItem.value = setIconUrl(getOnlyCrypto(result))
+            }*/
+            _coinsItem.value = CoinApiResult.Loading()
+            try {
+                val coinsFromApi = withContext(Dispatchers.IO) {
+                    iCoinsRepository.getCoins()
+                }
+                _coinsItem.value = CoinApiResult.Success(coinsFromApi)
+            } catch (e: Exception) {
+                val coinResult = CoinApiResult.Error<List<CoinItem>>(e)
+                _coinsItem.value = coinResult
             }
         }
     }
