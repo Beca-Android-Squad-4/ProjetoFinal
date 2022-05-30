@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projetofinalquad4.data.remote.dto.CoinApiResult
 import com.example.projetofinalquad4.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.databinding.FavoritesFragmentBinding
 import com.example.projetofinalquad4.utils.Helpers
@@ -47,14 +48,16 @@ class FavoritesFragment : Fragment() {
         binding.recyclerViewFavorites.adapter = adapter
 
         viewModel.coinItem.observe(viewLifecycleOwner) { listCoins ->
-            getFavorites(listCoins as List<CoinItem>)
+            //listCoins as List<CoinItem>
+            getFavorites(listCoins)
         }
     }
 
-    private fun getFavorites(list: List<CoinItem>) {
+    private fun getFavorites(list: CoinApiResult<List<CoinItem>>) {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         Log.d("ListFavorites", "getFavorites: ${sharedPref.all}")
         val tempList: MutableList<CoinItem> = ArrayList()
+        list as List<CoinItem>
         list.forEach {
             if (sharedPref.all.contains(it.asset_id)) {
                 tempList.add(it)

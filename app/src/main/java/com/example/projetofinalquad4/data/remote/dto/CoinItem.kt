@@ -1,7 +1,7 @@
 package com.example.projetofinalquad4.data.remote.dto
 
 data class CoinItem(
-    val asset_id: String,
+    var asset_id: String,
     val data_end: String,
     val data_orderbook_end: String,
     val data_orderbook_start: String,

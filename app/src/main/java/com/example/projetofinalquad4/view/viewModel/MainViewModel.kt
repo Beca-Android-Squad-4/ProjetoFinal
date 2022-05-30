@@ -23,8 +23,8 @@ class MainViewModel(
     val coinSelected: LiveData<CoinItem> = _coinSelected
     // val coinSelected: LiveData<CoinApiResult<List<CoinItem>>> = _coinSelected
 
-    private val _teste = MutableLiveData<List<CoinItem>>()
-    val teste: LiveData<List<CoinItem>> = _teste
+    // private val _teste = MutableLiveData<List<CoinItem>>()
+    // val teste: LiveData<List<CoinItem>> = _teste
 
     // private val _coinsItem = MutableLiveData<List<CoinItem>>()
     private val _coinsItem = MutableLiveData<CoinApiResult<List<CoinItem>>>()
@@ -33,7 +33,26 @@ class MainViewModel(
 
     fun setCoin(coinId: String) {
         viewModelScope.launch {
-            _coinSelected.value = teste.value?.find { it.asset_id == coinId }
+            // _coinSelected.value = teste.value?.find { it.asset_id == coinId }
+            _coinsItem.value = CoinApiResult.Loading()
+            // _coinsItem.value = setIconUrl( _coinsItem.value as List<CoinItem>)
+            try {
+                val coinsFromApi = withContext(Dispatchers.IO) {
+                    iCoinsRepository.getCoins()
+                }
+                setIconUrl(coinsFromApi)
+                getOnlyCrypto(coinsFromApi)
+                //_coinSelected.value = coinsFromApi.value?.find { it.asset_id == coinId }
+                coinsFromApi.forEach {
+                    if(it.asset_id == coinId){
+                        _coinSelected.value = it
+                    }
+                }
+                _coinsItem.value = CoinApiResult.Success(coinsFromApi)
+            } catch (e: Exception) {
+                val coinResult = CoinApiResult.Error<List<CoinItem>>(e)
+                _coinsItem.value = coinResult
+            }
         }
     }
 
@@ -50,11 +69,9 @@ class MainViewModel(
             try {
                 val coinsFromApi = withContext(Dispatchers.IO) {
                     iCoinsRepository.getCoins()
-
                 }
                 setIconUrl(coinsFromApi)
                 getOnlyCrypto(coinsFromApi)
-
                 _coinsItem.value = CoinApiResult.Success(coinsFromApi)
             } catch (e: Exception) {
                 val coinResult = CoinApiResult.Error<List<CoinItem>>(e)
