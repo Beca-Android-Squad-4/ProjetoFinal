@@ -41,7 +41,7 @@ class MainViewModel(
             _coinsItem.value = CoinApiResult.Loading()
             // _coinsItem.value = setIconUrl( _coinsItem.value as List<CoinItem>)
             try {
-                if (coinsFromApi.isNullOrEmpty()){
+                if (coinsFromApi.isNullOrEmpty()) {
                     coinsFromApi = withContext(Dispatchers.IO) {
                         iCoinsRepository.getCoins()
                     }

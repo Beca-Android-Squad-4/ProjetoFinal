@@ -11,13 +11,13 @@ data class CoinItem(
     val data_symbols_count: Int,
     val data_trade_end: String,
     val data_trade_start: String,
-    val id_icon: String,
+    val id_icon: String?,
     val name: String,
     val type_is_crypto: Int,
     val volume_1day_usd: Double,
     val volume_1hrs_usd: Double,
     val volume_1mth_usd: Double,
     val price_usd: Double,
-    var icon_url: String,
-    var isFavorite: Boolean = false
+    var icon_url: String?,
+    var isFavorite: Boolean? = false
 )
