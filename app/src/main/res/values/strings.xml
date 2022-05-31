@@ -5,14 +5,20 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="coin">Criptomoeda</string>
     <string name="name_coin">Nome da Moeda</string>
-    <string name="price_coin">Preço da Moeda</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="go_back">Go Back</string>
     <string name="add">Adicionar como favorito</string>
     <string name="last_hour">Última hora</string>
     <string name="last_day">Último dia</string>
     <string name="last_month">Último mês</string>
+    <string name="price_coin">Preço da Moeda</string>
     <string name="last_price_hour">Último preço por hora</string>
     <string name="last_price_day">Último preço por dia</string>
     <string name="last_price_month">Último preço por mês</string>
+    <string name="SimboloMoedaFavorita">Símbolo da moeda favorita</string>
+    <string name="PrecoMoedaFavorita">Preço moeda favorita</string>
+    <string name="NomeAbreviadoMoedaFavorita">Nome abreviado moeda favortia</string>
+    <string name="NomeMoedaFavorita">Nome moeda favorita</string>
+    <string name="BuscaMoeda">Digite o nome da moeda</string>
 </resources>
