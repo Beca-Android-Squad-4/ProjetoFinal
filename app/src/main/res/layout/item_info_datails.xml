@@ -5,13 +5,15 @@
     android:background="@android:color/transparent"
     android:orientation="horizontal"
     android:padding="14dp"
+    android:screenReaderFocusable="true"
     >
 
     <TextView
         android:id="@+id/tv_ultimosNegocios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ultima Hora"
+        android:text="Última Hora"
+        android:hint="@string/last_hour"
         android:layout_weight="1"
         />
 
@@ -20,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Preço"
+        android:hint="@string/price_coin"
         android:layout_gravity="right"
         android:gravity="right"
         android:layout_weight="1"

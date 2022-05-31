@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Projeto Final Quad 4</string>
+    <string name="app_name">Moeda Digital</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -13,6 +13,9 @@
     <string name="last_day">Último dia</string>
     <string name="last_month">Último mês</string>
     <string name="last_price_hour">Último preço por hora</string>
+    <string name="try_again">Erro 404 - Tentar Novamente</string>
+    <string name="item_fav">Item como favorito</string>
+    <string name="date">4 de março de 2022</string>
     <string name="last_price_day">Último preço por dia</string>
     <string name="last_price_month">Último preço por mês</string>
 </resources>

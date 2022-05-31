@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_fragment"
-    tools:context=".view.fragment.CoinsFragment">
+    tools:context=".view.fragment.CoinsFragment"
+    android:screenReaderFocusable="true">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -21,6 +22,7 @@
             android:layout_height="wrap_content"
             android:background="@color/bg_title"
             android:paddingBottom="8dp"
+            android:screenReaderFocusable="true"
             >
 
             <include
@@ -37,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
+                app:defaultQueryHint="@string/name_coin"
                 android:background="@drawable/bg_search_view"
                 android:queryHint="@android:string/search_go"
                 app:layout_constraintEnd_toEndOf="parent"

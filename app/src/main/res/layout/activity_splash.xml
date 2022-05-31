@@ -16,6 +16,7 @@
         android:autoSizeMinTextSize="22sp"
         android:elegantTextHeight="true"
         android:text="Moeda Digital"
+        android:hint="@string/app_name"
         android:textColor="@color/white"
         android:textSize="40dp" />
 
