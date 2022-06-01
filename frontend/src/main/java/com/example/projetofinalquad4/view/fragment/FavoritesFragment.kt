@@ -10,11 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.nttdata.test.backend.data.remote.dto.CoinApiResult
-import com.nttdata.test.backend.data.remote.dto.CoinItem
+import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.databinding.FavoritesFragmentBinding
 import com.example.projetofinalquad4.utils.Helpers
 import com.example.projetofinalquad4.view.viewModel.MainViewModel
+import com.nttdata.test.backend.data.remote.dto.CoinApiResult
+import com.nttdata.test.backend.data.remote.dto.CoinItem
 
 class FavoritesFragment : Fragment() {
 
@@ -33,6 +34,11 @@ class FavoritesFragment : Fragment() {
         // binding.include.tvMainDate.text = Helpers.GetCalendarDate()
 
         setupAdapter()
+
+        adapter.onClickListener = { coinId ->
+            viewModel.setCoin(coinId)
+            replaceFragment(InfoFragment())
+        }
 
         return view
     }
@@ -75,5 +81,13 @@ class FavoritesFragment : Fragment() {
 
         adapter.submitList(tempList)
         // val highScore = sharedPref.getInt(, defaultValue)
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = activity?.supportFragmentManager
+        val fragmentTransaction = fragmentManager?.beginTransaction()
+        fragmentTransaction?.replace(R.id.nav_fragment, fragment)
+        fragmentTransaction?.addToBackStack(null)
+        fragmentTransaction?.commit()
     }
 }
