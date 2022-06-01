@@ -112,6 +112,7 @@ class CoinsFragment : Fragment() {
                 }
                 is CoinApiResult.Error<*> -> {
                     Log.d("INFO", "Error: ${listCoins.throwable.cause}")
+                    Log.d("INFO", "Error: ${listCoins.throwable.message}")
                 }
             }
         }
