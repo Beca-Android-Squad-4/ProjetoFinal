@@ -7,24 +7,29 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.projetofinalquad4.R
-import com.nttdata.test.backend.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.databinding.ItemFavoritesBinding
 import com.example.projetofinalquad4.utils.Helpers
+import com.nttdata.test.backend.data.remote.dto.CoinItem
 
 class AdapterFavorites : ListAdapter<CoinItem, AdapterFavorites.ViewHolder>(DIFF_CALLBACK) {
+
+    var onClickListener: ((coinId: String) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemFavoritesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ViewHolder(binding)
+        return ViewHolder(binding, onClickListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class ViewHolder(val binding: ItemFavoritesBinding) :
+    class ViewHolder(
+        private val binding: ItemFavoritesBinding,
+        private val onClickListener: ((coinId: String) -> Unit)? = null
+    ) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(x: CoinItem) {
@@ -42,6 +47,10 @@ class AdapterFavorites : ListAdapter<CoinItem, AdapterFavorites.ViewHolder>(DIFF
                     .load(R.drawable.generic_coin)
                     .centerCrop()
                     .into(binding.imageView3)
+            }
+
+            binding.linearLayout2.setOnClickListener {
+                onClickListener?.invoke(x.asset_id)
             }
         }
     }

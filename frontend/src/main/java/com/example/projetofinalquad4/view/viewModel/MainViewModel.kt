@@ -97,7 +97,7 @@ class MainViewModel(
         list.forEach { coin ->
             if (coin.id_icon != null) {
                 coin.icon_url = Constants.ICON_URL_BASE +
-                    coin.id_icon.replace("-", "") +
+                    coin.id_icon!!.replace("-", "") +
                     Constants.ICON_DEFAULT_TYPE
             }
         }

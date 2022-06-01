@@ -31,7 +31,7 @@ class InfoFragment : Fragment() {
         setupAdapter()
 
         binding.btnReturn.setOnClickListener {
-            replaceFragment(CoinsFragment())
+            getActivity()?.onBackPressed()
         }
 
         return view
@@ -56,10 +56,10 @@ class InfoFragment : Fragment() {
 
             Log.d("CoinRecive", "onActivityCreated: $coin")
             binding.tvCoinName.text = coin.name
-            binding.tvCoinPrice.text = "$ "+ Helpers.formatPriceCoin(coin.price_usd)
-            binding.tvPriceHour.text = "$ "+ Helpers.formatPriceVolumeHoraCoin(coin.volume_1hrs_usd)
-            binding.tvPriceDay.text = "$ "+ Helpers.formatPriceVolumeDiaCoin(coin.volume_1day_usd)
-            binding.tvPriceMonth.text = "$ "+ Helpers.formatPriceVolumeMesCoin(coin.volume_1mth_usd)
+            binding.tvCoinPrice.text = "$ " + Helpers.formatPriceCoin(coin.price_usd)
+            binding.tvPriceHour.text = "$ " + Helpers.formatPriceVolumeHoraCoin(coin.volume_1hrs_usd)
+            binding.tvPriceDay.text = "$ " + Helpers.formatPriceVolumeDiaCoin(coin.volume_1day_usd)
+            binding.tvPriceMonth.text = "$ " + Helpers.formatPriceVolumeMesCoin(coin.volume_1mth_usd)
 
             if (!coin.icon_url.isNullOrEmpty()) {
                 Glide.with(requireContext())
@@ -74,6 +74,7 @@ class InfoFragment : Fragment() {
             }
 
             binding.btnAddFavorite.setOnClickListener {
+                Log.d("Coin", "getData: $coin")
                 when (coin.isFavorite) {
                     true -> { // Vai remover dos favoritos
                         sharedPref.edit().remove(coin.asset_id).apply()

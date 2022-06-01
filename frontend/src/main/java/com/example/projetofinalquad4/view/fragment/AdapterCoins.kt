@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.projetofinalquad4.R
-import com.nttdata.test.backend.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.databinding.ItemCoinBinding
 import com.example.projetofinalquad4.utils.Helpers
-import kotlin.math.absoluteValue
+import com.nttdata.test.backend.data.remote.dto.CoinItem
 
 class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBACK) {
 
@@ -35,7 +34,7 @@ class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBAC
         fun bind(x: CoinItem) {
             binding.tvCoinNameItem.text = x.name
             binding.tvCoinSymbolItem.text = x.asset_id
-            binding.tvCoinPriceItem.text = "$ "+ Helpers.formatPriceCoin(x.price_usd)
+            binding.tvCoinPriceItem.text = "$ " + Helpers.formatPriceCoin(x.price_usd)
 
             when (x.isFavorite) {
                 true -> binding.ivFavoriteItem.visibility = View.VISIBLE
