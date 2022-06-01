@@ -7,6 +7,7 @@ import com.example.projetofinalquad4.data.remote.dto.CoinItem
 import com.example.projetofinalquad4.data.repository.CoinsRepository
 import com.example.projetofinalquad4.networkUtils.RetrofitInstance
 import com.example.projetofinalquad4.view.viewModel.MainViewModelFactory
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -48,8 +49,30 @@ class Helpers {
         }
 
         fun formatPriceCoin(price: Double): String {
+            val dec = DecimalFormat("00,000.00")
+            // return String.format("$ %.2f", price)
+            return dec.format(price)
+        }
 
-            return String.format("$ %.4f", price)
+        fun formatPriceVolumeHoraCoin(price: Double): String {
+            val teste = ((price / 10000000000000) * 1000) * 1000
+            val dec = DecimalFormat("###,000.00")
+            // return String.format("$ %.2f", price)
+            return dec.format(teste)
+        }
+
+        fun formatPriceVolumeDiaCoin(price: Double): String {
+            val teste = ((price / 1000000000000000) * 1000) * 1000
+            val dec = DecimalFormat("###,000.00")
+            // return String.format("$ %.2f", price)
+            return dec.format(teste)
+        }
+
+        fun formatPriceVolumeMesCoin(price: Double): String {
+            val teste = ((price / 1000000000000000000) * 100) * 1000
+            val dec = DecimalFormat("###,000.00")
+            // return String.format("$ %.2f", price)
+            return dec.format(teste)
         }
 
 //        fun replaceFragment(fragment: Fragment){

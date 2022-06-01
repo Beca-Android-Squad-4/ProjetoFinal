@@ -35,7 +35,7 @@ class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBAC
         fun bind(x: CoinItem) {
             binding.tvCoinNameItem.text = x.name
             binding.tvCoinSymbolItem.text = x.asset_id
-            binding.tvCoinPriceItem.text = Helpers.formatPriceCoin(x.price_usd)
+            binding.tvCoinPriceItem.text = "$ "+ Helpers.formatPriceCoin(x.price_usd)
 
             when (x.isFavorite) {
                 true -> binding.ivFavoriteItem.visibility = View.VISIBLE

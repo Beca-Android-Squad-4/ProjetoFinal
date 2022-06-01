@@ -24,4 +24,5 @@
     <string name="NomeAbreviadoMoedaFavorita">Nome abreviado moeda favortia</string>
     <string name="NomeMoedaFavorita">Nome moeda favorita</string>
     <string name="BuscaMoeda">Digite o nome da moeda</string>
+    <string name="DescricaoSimbolo">Descrição símbolo da moeda</string>
 </resources>

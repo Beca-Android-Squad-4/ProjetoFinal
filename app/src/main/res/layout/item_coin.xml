@@ -23,14 +23,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:screenReaderFocusable="true">
 
         <TextView
             android:id="@+id/tv_coinNameItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:text="Bitcoin"
+            android:text="@string/name_coin"
+            android:focusable="false"
             android:hint="@string/name_coin"
             android:textColor="@color/white" />
 
@@ -39,7 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:text="BTC"
+            android:text="@string/DescricaoSimbolo"
+            android:focusable="false"
             android:hint="@string/coin"
             android:textColor="@color/white" />
     </LinearLayout>
@@ -65,7 +68,8 @@
         android:layout_marginRight="14dp"
         android:layout_weight="1"
         android:gravity="right"
-        android:text="Preço"
+        android:text="@string/price_coin"
+        android:focusable="false"
         android:hint="@string/price_coin"
         android:textColor="@color/white"
         android:textSize="15sp"/>
