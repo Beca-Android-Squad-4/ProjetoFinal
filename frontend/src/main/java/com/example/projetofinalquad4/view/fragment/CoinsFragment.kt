@@ -21,7 +21,6 @@ class CoinsFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels() { Helpers.getMainViewModelFactory() }
 
     private lateinit var adapter: AdapterCoins
-    private lateinit var listResponse: MutableList<CoinItem>
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -37,37 +36,35 @@ class CoinsFragment : Fragment() {
         return view
     }
 
-    // private fun setupSearchView(list: List<CoinDto>) {
     private fun setupSearchView(list: List<CoinItem>) {
-        // var newList: MutableList<CoinDto> = ArrayList()
         var newList: MutableList<CoinItem> = ArrayList()
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.searchView.clearFocus()
                 newList = Helpers.FilterListQuery(query, list)
-                // Log.d("QuerySubmit", "onQueryTextSubmit: $newList")
                 setlistQueryAdapter(newList)
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // binding.searchView.clearFocus()
                 newList = Helpers.FilterListQuery(newText, list)
-                // Log.d("QuerySubmit", "onQueryTextSubmit: $newList")
                 setlistQueryAdapter(newList)
                 return true
             }
         })
     }
 
-    // private fun setlistQueryAdapter(newList: MutableList<CoinDto>) {
     private fun setlistQueryAdapter(newList: MutableList<CoinItem>) {
         if (newList.isNotEmpty()) {
             setListAdapter(newList)
-        } else Helpers.ToastText(
-            "Não existe essa moeda",
-            requireContext()
-        )
+            binding.widgetListEmpty.visibility = View.GONE
+            binding.rvMainCoins.visibility = View.VISIBLE
+            binding.include2.root.visibility = View.VISIBLE
+        } else {
+            binding.rvMainCoins.visibility = View.GONE
+            binding.include2.root.visibility = View.GONE
+            binding.widgetListEmpty.visibility = View.VISIBLE
+        }
     }
 
     private fun setupUi() {
@@ -101,6 +98,9 @@ class CoinsFragment : Fragment() {
                 }
                 is CoinApiResult.Success<*> -> {
                     Log.d("INFO", "Success")
+                    binding.progressBar.visibility = View.GONE
+                    binding.include2.root.visibility = View.VISIBLE
+                    binding.rvMainCoins.visibility = View.VISIBLE
                     val sharedPref =
                         activity?.getPreferences(Context.MODE_PRIVATE) ?: return@observe
 
@@ -111,8 +111,10 @@ class CoinsFragment : Fragment() {
                     setupSearchView(listCoins.data as List<CoinItem>)
                 }
                 is CoinApiResult.Error<*> -> {
-                    Log.d("INFO", "Error: ${listCoins.throwable.cause}")
-                    Log.d("INFO", "Error: ${listCoins.throwable.message}")
+                    binding.progressBar.visibility = View.GONE
+                    Log.d("INFO", "Error.cause: ${listCoins.throwable.cause}")
+                    Log.d("INFO", "Error: $listCoins")
+                    Log.d("INFO", "Error.message: ${listCoins.throwable.message}")
                 }
             }
         }

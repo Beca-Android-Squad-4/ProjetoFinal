@@ -9,12 +9,22 @@
     tools:context=".view.fragment.CoinsFragment"
     android:screenReaderFocusable="true">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_mainCoins" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:label = "@string/app_name"
-        android:hint ="@string/BuscaMoeda"
+        android:hint="@string/BuscaMoeda"
+        android:label="@string/app_name"
         android:queryHint="Search..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +35,7 @@
             android:layout_height="wrap_content"
             android:background="@color/bg_title"
             android:paddingBottom="8dp"
-            android:screenReaderFocusable="true"
-            >
+            android:screenReaderFocusable="true">
 
             <include
                 android:id="@+id/include"
@@ -39,14 +48,14 @@
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
-                android:label = "@string/app_name"
-                android:hint ="@string/BuscaMoeda"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
-                app:defaultQueryHint="@string/name_coin"
                 android:background="@drawable/bg_search_view"
+                android:hint="@string/BuscaMoeda"
+                android:label="@string/app_name"
                 android:queryHint="@android:string/search_go"
+                app:defaultQueryHint="@string/name_coin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/include">
@@ -63,6 +72,8 @@
         android:layout_height="1dp"
         android:layout_marginBottom="4dp"
         android:background="@color/bg_fragment"
+        android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/rv_mainCoins"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -74,10 +85,46 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include2"
         tools:listitem="@layout/item_coin" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/widgetListEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="44dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/list_is_empty"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_button"
+            android:backgroundTint="#CC9EA96D"
+            android:padding="12dp"
+            android:text="Não existe essa moeda ;("
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
