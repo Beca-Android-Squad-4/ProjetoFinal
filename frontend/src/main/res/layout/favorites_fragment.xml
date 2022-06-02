@@ -12,6 +12,7 @@
     <include
         android:id="@+id/include"
         layout="@layout/title_main"
+        android:layout_marginTop="28dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

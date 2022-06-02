@@ -3,9 +3,7 @@ package com.example.projetofinalquad4.view.fragment
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -23,6 +21,7 @@ class CoinsFragment : Fragment() {
     private lateinit var adapter: AdapterCoins
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
+    private var themedContext: Context? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,10 +59,12 @@ class CoinsFragment : Fragment() {
             binding.widgetListEmpty.visibility = View.GONE
             binding.rvMainCoins.visibility = View.VISIBLE
             binding.include2.root.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.GONE
         } else {
             binding.rvMainCoins.visibility = View.GONE
             binding.include2.root.visibility = View.GONE
             binding.widgetListEmpty.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.GONE
         }
     }
 
@@ -123,6 +124,21 @@ class CoinsFragment : Fragment() {
     private fun setListAdapter(list: List<CoinItem>) {
         adapter.submitList(list)
         adapter.notifyDataSetChanged()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context).also {
+            themedContext = ContextThemeWrapper(context, R.style.Theme_MainFrag)
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        themedContext = null
+    }
+
+    override fun getContext(): Context? {
+        return themedContext ?: super.getContext()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
