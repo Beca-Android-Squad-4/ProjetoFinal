@@ -1,13 +1,14 @@
 package com.example.projetofinalquad4.view.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.projetofinalquad4.utils.Constants
 import com.nttdata.test.backend.data.remote.dto.CoinApiResult
 import com.nttdata.test.backend.data.remote.dto.CoinItem
 import com.nttdata.test.backend.data.repository.ICoinsRepository
-import com.example.projetofinalquad4.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -78,6 +79,7 @@ class MainViewModel(
                 _coinsItem.value = CoinApiResult.Success(coinsFromApi)
             } catch (e: Exception) {
                 val coinResult = CoinApiResult.Error<List<CoinItem>>(e)
+                Log.d("CoinResult", "setCoin: $coinResult")
                 _coinsItem.value = coinResult
             }
         }
