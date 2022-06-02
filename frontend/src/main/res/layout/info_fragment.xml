@@ -7,6 +7,7 @@
     android:background="@color/primaryColor_splashAndDatails">
 
     <ScrollView
+        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

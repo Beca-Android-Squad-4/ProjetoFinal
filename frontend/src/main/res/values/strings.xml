@@ -25,4 +25,5 @@
     <string name="NomeMoedaFavorita">Nome moeda favorita</string>
     <string name="BuscaMoeda">Digite o nome da moeda</string>
     <string name="DescricaoSimbolo">Descrição símbolo da moeda</string>
+    <string name="dimenStatusBar">12dp</string>
 </resources>

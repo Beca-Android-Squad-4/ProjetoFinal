@@ -54,19 +54,17 @@ class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBAC
         }
 
         private fun setImages(x: CoinItem) {
-            if (!binding.ivCoinItem.isVisible) { // Impede o chamado desnecessario do Glide
-                binding.ivCoinItem.visibility = View.VISIBLE
-                if (!x.icon_url.isNullOrEmpty()) {
-                    Glide.with(binding.root.context)
-                        .load(x.icon_url)
-                        .centerCrop()
-                        .into(binding.ivCoinItem)
-                } else {
-                    Glide.with(binding.root.context)
-                        .load(R.drawable.generic_coin)
-                        .centerCrop()
-                        .into(binding.ivCoinItem)
-                }
+            binding.ivCoinItem.visibility = View.VISIBLE
+            if (!x.icon_url.isNullOrEmpty()) {
+                Glide.with(binding.root.context)
+                    .load(x.icon_url)
+                    .centerCrop()
+                    .into(binding.ivCoinItem)
+            } else {
+                Glide.with(binding.root.context)
+                    .load(R.drawable.generic_coin)
+                    .centerCrop()
+                    .into(binding.ivCoinItem)
             }
         }
     }
