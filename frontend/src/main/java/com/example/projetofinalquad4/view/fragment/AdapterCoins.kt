@@ -3,6 +3,7 @@ package com.example.projetofinalquad4.view.fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -36,25 +37,36 @@ class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBAC
             binding.tvCoinSymbolItem.text = x.asset_id
             binding.tvCoinPriceItem.text = "$ " + Helpers.formatPriceCoin(x.price_usd)
 
+            getFavorite(x)
+
+            setImages(x)
+
+            binding.root.setOnClickListener {
+                onClickListener?.invoke(x.asset_id)
+            }
+        }
+
+        private fun getFavorite(x: CoinItem) {
             when (x.isFavorite) {
                 true -> binding.ivFavoriteItem.visibility = View.VISIBLE
                 false -> binding.ivFavoriteItem.visibility = View.GONE
             }
+        }
 
-            if (!x.icon_url.isNullOrEmpty()) {
-                Glide.with(binding.root.context)
-                    .load(x.icon_url)
-                    .centerCrop()
-                    .into(binding.ivCoinItem)
-            } else {
-                Glide.with(binding.root.context)
-                    .load(R.drawable.generic_coin)
-                    .centerCrop()
-                    .into(binding.ivCoinItem)
-            }
-
-            binding.root.setOnClickListener {
-                onClickListener?.invoke(x.asset_id)
+        private fun setImages(x: CoinItem) {
+            if (!binding.ivCoinItem.isVisible) { // Impede o chamado desnecessario do Glide
+                binding.ivCoinItem.visibility = View.VISIBLE
+                if (!x.icon_url.isNullOrEmpty()) {
+                    Glide.with(binding.root.context)
+                        .load(x.icon_url)
+                        .centerCrop()
+                        .into(binding.ivCoinItem)
+                } else {
+                    Glide.with(binding.root.context)
+                        .load(R.drawable.generic_coin)
+                        .centerCrop()
+                        .into(binding.ivCoinItem)
+                }
             }
         }
     }

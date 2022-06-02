@@ -14,9 +14,11 @@
         android:id="@+id/iv_coinItem"
         android:layout_width="50dp"
         android:contentDescription="@string/coin"
+        android:visibility="gone"
         android:layout_height="50dp"
         android:layout_marginHorizontal="14dp"
         android:scaleType="centerCrop"
+        tools:visibility="visible"
         tools:srcCompat="@drawable/ic_money_24" />
 
     <LinearLayout

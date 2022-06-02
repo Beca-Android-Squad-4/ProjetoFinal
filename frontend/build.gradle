@@ -50,6 +50,7 @@ android {
 dependencies {
     implementation libraries
     implementation project(path: ':backend')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
     kapt librariesKapt
     debugImplementation librariesDebug
 
