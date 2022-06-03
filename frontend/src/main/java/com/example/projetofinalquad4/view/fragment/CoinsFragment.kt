@@ -24,6 +24,7 @@ class CoinsFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
     private var themedContext: Context? = null
+    private lateinit var errorFragment: ErrorFragment
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -134,6 +135,8 @@ class CoinsFragment : Fragment() {
                 }
                 is CoinApiResult.Error<*> -> {
                     binding.progressBar.visibility = View.GONE
+                    errorFragment = ErrorFragment()
+                    replaceFragment(ErrorFragment())
                     Log.d("INFO", "Error.cause: ${listCoins.throwable.cause}")
                     Log.d("INFO", "Error: $listCoins")
                     Log.d("INFO", "Error.message: ${listCoins.throwable.message}")

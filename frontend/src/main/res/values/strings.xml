@@ -26,4 +26,5 @@
     <string name="BuscaMoeda">Digite o nome da moeda</string>
     <string name="DescricaoSimbolo">Descrição símbolo da moeda</string>
     <string name="dimenStatusBar">12dp</string>
+    <string name="mensagem_de_erro">Mensagem de erro</string>
 </resources>
