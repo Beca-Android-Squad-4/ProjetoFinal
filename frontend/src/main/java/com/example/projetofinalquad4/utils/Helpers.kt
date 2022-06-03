@@ -50,21 +50,21 @@ class Helpers {
 
         fun formatPriceVolumeHoraCoin(price: Double): String {
             val teste = ((price / 10000000000000) * 1000) * 1000
-            val dec = DecimalFormat("###,000.00")
+            val dec = DecimalFormat("#0.00")
             // return String.format("$ %.2f", price)
             return dec.format(teste)
         }
 
         fun formatPriceVolumeDiaCoin(price: Double): String {
             val teste = ((price / 1000000000000000) * 1000) * 1000
-            val dec = DecimalFormat("###,000.00")
+            val dec = DecimalFormat("#0.00")
             // return String.format("$ %.2f", price)
             return dec.format(teste)
         }
 
         fun formatPriceVolumeMesCoin(price: Double): String {
             val teste = ((price / 1000000000000000000) * 100) * 1000
-            val dec = DecimalFormat("###,000.00")
+            val dec = DecimalFormat("#0.00")
             // return String.format("$ %.2f", price)
             return dec.format(teste)
         }
