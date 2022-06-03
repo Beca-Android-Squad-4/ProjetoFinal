@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Moedas"
+        android:icon="@drawable/ic_money_24"
+        android:id="@+id/nav_moedas"/>
+    <item android:title="Favoritos"
+        android:icon="@drawable/ic_star_24"
+        android:id="@+id/nav_favoritos"/>
+</menu>

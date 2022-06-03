@@ -68,7 +68,7 @@ class InfoFragment : Fragment() {
                     .into(binding.imageView)
             } else {
                 Glide.with(requireContext())
-                    .load(R.drawable.generic_coin)
+                    .load(R.drawable.bitcoin)
                     .centerCrop()
                     .into(binding.imageView)
             }

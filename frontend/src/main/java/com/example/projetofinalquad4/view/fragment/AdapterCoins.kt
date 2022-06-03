@@ -62,7 +62,7 @@ class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBAC
                     .into(binding.ivCoinItem)
             } else {
                 Glide.with(binding.root.context)
-                    .load(R.drawable.generic_coin)
+                    .load(R.drawable.bitcoin)
                     .centerCrop()
                     .into(binding.ivCoinItem)
             }

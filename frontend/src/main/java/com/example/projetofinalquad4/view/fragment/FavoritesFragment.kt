@@ -31,7 +31,7 @@ class FavoritesFragment : Fragment() {
     ): View? {
         _binding = FavoritesFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
-        // binding.include.tvMainDate.text = Helpers.GetCalendarDate()
+        binding.include.tvMainDate.text = Helpers.GetCalendarDate()
 
         setupAdapter()
 

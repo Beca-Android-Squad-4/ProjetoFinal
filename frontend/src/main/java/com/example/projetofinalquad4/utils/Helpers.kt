@@ -32,7 +32,7 @@ class Helpers {
         }
 
         fun GetCalendarDate(): String {
-            return SimpleDateFormat("d MMM yyyy", Locale.getDefault()).format(Date())
+            return SimpleDateFormat("d MMM yyyy", Locale("pt-BR", "Brazil", "")).format(Date())
         }
 
         fun getMainViewModelFactory(): MainViewModelFactory {
@@ -44,7 +44,7 @@ class Helpers {
         }
 
         fun formatPriceCoin(price: Double): String {
-            val dec = DecimalFormat("00,000.00")
+            val dec = DecimalFormat("0,000.00")
             return dec.format(price)
         }
 

@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_splash.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\info_fragment.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\info_fragment.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\divider.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\divider.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\title_main.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\title_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_error.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\fragment_error.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_coin.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\item_coin.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_favorites.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\item_favorites.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\favorites_fragment.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\favorites_fragment.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\main_fragment.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\main_fragment.xml"
+    },
+    {
+        "merged": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_info_datails.xml",
+        "source": "C:\\Users\\sbaldass\\Downloads\\ProjetoFinal\\app\\src\\main\\res\\layout\\item_info_datails.xml"
+    }
+]

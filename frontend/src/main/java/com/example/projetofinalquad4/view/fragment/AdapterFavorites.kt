@@ -44,7 +44,7 @@ class AdapterFavorites : ListAdapter<CoinItem, AdapterFavorites.ViewHolder>(DIFF
                     .into(binding.imageView3)
             } else {
                 Glide.with(binding.root.context)
-                    .load(R.drawable.generic_coin)
+                    .load(R.drawable.bitcoin)
                     .centerCrop()
                     .into(binding.imageView3)
             }
