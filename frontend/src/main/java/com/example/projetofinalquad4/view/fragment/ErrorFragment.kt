@@ -40,7 +40,7 @@ class ErrorFragment : Fragment() {
     }
 
     private fun mensagemErro() {
-        val mensagem = viewModel.setErro()
+        val mensagem = viewModel.mensagem
         binding.mensagem.text = mensagem
     }
 }

@@ -137,6 +137,7 @@ class CoinsFragment : Fragment() {
                     binding.progressBar.visibility = View.GONE
                     errorFragment = ErrorFragment()
                     replaceFragment(ErrorFragment())
+                    viewModel.mensagem = listCoins.throwable.message.toString()
                     Log.d("INFO", "Error.cause: ${listCoins.throwable.cause}")
                     Log.d("INFO", "Error: $listCoins")
                     Log.d("INFO", "Error.message: ${listCoins.throwable.message}")
