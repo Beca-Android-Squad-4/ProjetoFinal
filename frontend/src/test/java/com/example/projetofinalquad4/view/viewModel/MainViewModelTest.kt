@@ -34,9 +34,21 @@ class MainViewModelTest {
         )
         mainViewModelError = MainViewModel(
             CoinsRepository(
-                ICoinsClientFake("ERRO-400")
+                ICoinsClientFake("ERRO-Generic")
             )
         )
+    }
+
+    @Test
+    fun `When api call is successful`() {
+        // TODO
+        Assert.assertEquals(true, true)
+    }
+
+    @Test
+    fun `When api call is fail`() {
+        // TODO
+        Assert.assertEquals(true, true)
     }
 
     @Test
@@ -56,8 +68,8 @@ class MainViewModelTest {
     fun `When the list of coins isn't empty, not require other api call`() {
         // Given
         val list = mainViewModelOk.coinItem
-        var result = false
-        var result2 = false
+        var result = true
+        var result2 = true
 
         // Then
         mainViewModelOk.getCoinsFromRetrofit()
@@ -77,5 +89,52 @@ class MainViewModelTest {
 
         // When
         Assert.assertEquals(result, result2)
+    }
+
+    @Test
+    fun `When setFavorite set true`() {
+        // Given
+        val btc = mockCoinItem[0]
+        btc.isFavorite = true // Is favorite
+
+        // When
+        mainViewModelOk.getCoinsFromRetrofit()
+        mainViewModelOk.setCoin("BTC")
+        mainViewModelOk.setFavorite(true)
+
+        // Then
+
+        Assert.assertEquals(
+            btc.isFavorite,
+            mainViewModelOk.coinSelected.getOrAwaitValue().isFavorite
+        )
+    }
+
+    @Test
+    fun `When setFavorite set false`() {
+        // Given
+        val btc = mockCoinItem[0]
+        btc.isFavorite = false // Is favorite
+
+        // When
+        mainViewModelOk.getCoinsFromRetrofit()
+        mainViewModelOk.setCoin("BTC")
+        mainViewModelOk.setFavorite(false)
+
+        // Then
+
+        Assert.assertEquals(
+            btc.isFavorite,
+            mainViewModelOk.coinSelected.getOrAwaitValue().isFavorite
+        )
+    }
+
+    @Test
+    fun `When getOnlyCryptos return only cryptos`() {
+        val listTest = mockCoinItem.filter { it.type_is_crypto == 1 }
+
+        val result = mainViewModelOk.getOnlyCrypto(mockCoinItem)
+
+        Assert.assertEquals(listTest, result)
     }
 }

@@ -82,7 +82,7 @@ class MainViewModel(
         }
     }
 
-    private fun getOnlyCrypto(list: List<CoinItem>): List<CoinItem> {
+    fun getOnlyCrypto(list: List<CoinItem>): List<CoinItem> {
         return list.filter { it.type_is_crypto == Constants.TYPE_IS_CRYPTO }
     }
 
