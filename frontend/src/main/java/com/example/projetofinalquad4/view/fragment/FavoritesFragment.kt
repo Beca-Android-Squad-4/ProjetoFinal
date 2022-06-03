@@ -23,6 +23,7 @@ class FavoritesFragment : Fragment() {
     private lateinit var adapter: AdapterFavorites
     private var _binding: FavoritesFragmentBinding? = null
     private val binding get() = _binding!!
+    private lateinit var errorFragment: ErrorFragment
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,6 +71,11 @@ class FavoritesFragment : Fragment() {
                         tempList.add(it)
                     }
                 }
+            }
+
+            is CoinApiResult.Error -> {
+                errorFragment = ErrorFragment()
+                replaceFragment(ErrorFragment())
             }
         }
 

@@ -38,7 +38,6 @@ class AdapterCoins : ListAdapter<CoinItem, AdapterCoins.ViewHolder>(DIFF_CALLBAC
             binding.tvCoinPriceItem.text = "$ " + Helpers.formatPriceCoin(x.price_usd)
 
             getFavorite(x)
-
             setImages(x)
 
             binding.root.setOnClickListener {

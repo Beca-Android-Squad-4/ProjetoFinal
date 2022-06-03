@@ -15,7 +15,7 @@
     <string name="price_coin">Preço da Moeda</string>
     <string name="last_price_hour">Último preço por hora</string>
     <string name="try_again">Erro 404 - Tentar Novamente</string>
-    <string name="item_fav">Item como favorito</string>
+    <string name="item_fav">Moeda está como favorita</string>
     <string name="date">4 de março de 2022</string>
     <string name="last_price_day">Último preço por dia</string>
     <string name="last_price_month">Último preço por mês</string>
@@ -26,4 +26,5 @@
     <string name="BuscaMoeda">Digite o nome da moeda</string>
     <string name="DescricaoSimbolo">Descrição símbolo da moeda</string>
     <string name="dimenStatusBar">12dp</string>
+    <string name="mensagem_de_erro">Mensagem de erro</string>
 </resources>

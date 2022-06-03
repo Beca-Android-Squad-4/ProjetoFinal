@@ -25,9 +25,6 @@ class MainViewModel(
     val coinSelected: LiveData<CoinItem> = _coinSelected
     // val coinSelected: LiveData<CoinApiResult<List<CoinItem>>> = _coinSelected
 
-    // private val _teste = MutableLiveData<List<CoinItem>>()
-    // val teste: LiveData<List<CoinItem>> = _teste
-
     // private val _coinsItem = MutableLiveData<List<CoinItem>>()
     private val _coinsItem = MutableLiveData<CoinApiResult<List<CoinItem>>>()
 
@@ -36,11 +33,28 @@ class MainViewModel(
 
     var coinsFromApi: List<CoinItem> = ArrayList()
 
+    // tratamento de erros
+    private val _erroCoin = MutableLiveData<CoinApiResult<List<CoinItem>>>()
+    var coinErro: LiveData<CoinApiResult<List<CoinItem>>> = _coinsItem
+
+    fun setErro(): String? {
+        var coinResult: CoinApiResult.Error<List<CoinItem>>? = null
+        var mensagem: String? = null
+        viewModelScope.launch {
+            _erroCoin.value = CoinApiResult.Loading()
+            try {
+            } catch (e: Exception) {
+                coinResult = CoinApiResult.Error<List<CoinItem>>(e)
+                mensagem = coinResult!!.throwable.message.toString()
+            }
+        }
+
+        return mensagem
+    }
+
     fun setCoin(coinId: String) {
         viewModelScope.launch {
-            // _coinSelected.value = teste.value?.find { it.asset_id == coinId }
             _coinsItem.value = CoinApiResult.Loading()
-            // _coinsItem.value = setIconUrl( _coinsItem.value as List<CoinItem>)
             try {
                 if (coinsFromApi.isNullOrEmpty()) {
                     coinsFromApi = withContext(Dispatchers.IO) {
@@ -60,14 +74,7 @@ class MainViewModel(
 
     fun getCoinsFromRetrofit() {
         viewModelScope.launch {
-            /* if (_coinsItem.value.isNullOrEmpty()) {
-                 var result = iCoinsRepository.getCoins()
-                 _coinsItem.value = setIconUrl(getOnlyCrypto(result))
-             }*/
             _coinsItem.value = CoinApiResult.Loading()
-
-            // _coinsItem.value = setIconUrl( _coinsItem.value as List<CoinItem>)
-
             try {
                 if (coinsFromApi.isNullOrEmpty()) {
                     coinsFromApi = withContext(Dispatchers.IO) {
