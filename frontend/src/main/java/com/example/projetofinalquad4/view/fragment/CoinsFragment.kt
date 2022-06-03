@@ -7,6 +7,8 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.databinding.MainFragmentBinding
 import com.example.projetofinalquad4.utils.Helpers
@@ -79,6 +81,25 @@ class CoinsFragment : Fragment() {
         binding.rvMainCoins.adapter = adapter
 
         getData()
+
+        goToFirstItemInRecyclerView()
+    }
+
+    private fun goToFirstItemInRecyclerView() {
+        val linearLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.rvMainCoins.layoutManager = linearLayoutManager
+        binding.rvMainCoins.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (linearLayoutManager.findFirstVisibleItemPosition() == 0) {
+                    binding.fab.visibility = View.GONE
+                } else binding.fab.visibility = View.VISIBLE
+            }
+        })
+        binding.fab.setOnClickListener {
+            binding.rvMainCoins.scrollToPosition(0)
+        }
     }
 
     private fun getData() {
