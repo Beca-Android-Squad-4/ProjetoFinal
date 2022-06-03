@@ -7,8 +7,8 @@ class ICoinsClientFake(val string: String) : ICoinsClient {
     override suspend fun getData(): List<CoinItem> {
         return if (string == "OK-200") {
             mockCoinItem
-        } else if (string == "ERRO-400") {
-            listOf()
+        } else if (string == "ERRO-Generic") {
+            throw Throwable(string)
         } else listOf()
     }
 }
@@ -33,7 +33,7 @@ val mockCoinItem = listOf(
         5086694138579370039.52,
         31660.059941379328356677014311,
         "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/4caf2b16a0174e26a3482cea69c34cba.png",
-        null
+        false
     ),
     CoinItem(
         "BRL",
@@ -54,7 +54,7 @@ val mockCoinItem = listOf(
         5086694138579370039.52,
         31660.059941379328356677014311,
         "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/4caf2b16a0174e26a3482cea69c34cba.png",
-        null
+        false
     ),
     CoinItem(
         "NIS",
@@ -75,7 +75,7 @@ val mockCoinItem = listOf(
         5086694138579370039.52,
         31660.059941379328356677014311,
         null,
-        null
+        false
     )
 
 )
