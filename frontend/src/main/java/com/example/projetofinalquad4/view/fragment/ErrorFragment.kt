@@ -42,7 +42,7 @@ class ErrorFragment : Fragment() {
     private fun mensagemErro() {
         val mensagem = viewModel.mensagem
         if (mensagem.contains("400")) {
-            binding.mensagem.text = "Instabilidade no seu computador ou na sua conexão de Internet."
+            binding.mensagem.text = "Instabilidade no seu computador ou na sua conexão de Internet"
             Glide.with(requireContext())
                 .load(R.drawable.error_400)
                 .centerCrop()
@@ -69,6 +69,12 @@ class ErrorFragment : Fragment() {
             binding.mensagem.text = "URL excluída permanentemente"
             Glide.with(requireContext())
                 .load(R.drawable.erro_410)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("429")) {
+            binding.mensagem.text = "Você excedeu o limite de requisições"
+            Glide.with(requireContext())
+                .load(R.drawable.error_429)
                 .centerCrop()
                 .into(binding.imageView2)
         } else if (mensagem.contains("500")) {

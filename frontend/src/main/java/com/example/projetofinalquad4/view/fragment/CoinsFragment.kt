@@ -107,14 +107,6 @@ class CoinsFragment : Fragment() {
 
         viewModel.getCoinsFromRetrofit()
         viewModel.coinItem.observe(viewLifecycleOwner) { listCoins ->
-            // Log.d("responseRetrofit", "getData: $listCoins")
-            /* val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@observe
-             listCoins.forEach { coin ->
-                 if (sharedPref.all.containsKey(coin.asset_id)) coin.isFavorite = true
-             }
-             setListAdapter(listCoins)
-             setupSearchView(listCoins)*/
-
             when (listCoins) {
                 is CoinApiResult.Loading<*> -> {
                     Log.d("INFO", "Loading")
