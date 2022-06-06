@@ -44,29 +44,39 @@ class Helpers {
         }
 
         fun formatPriceCoin(price: Double): String {
-            val dec = DecimalFormat("0,000.00")
-            return dec.format(price)
+            return if (price < 100 && price >= 10) {
+                val dec = DecimalFormat("00.#####")
+                "$ " + dec.format(price)
+            } else if (price < 10) {
+                val dec = DecimalFormat("0.######")
+                "$ " + dec.format(price)
+            } else if (price.equals(0)) {
+                "Sem Preço"
+            } else {
+                val dec = DecimalFormat("##,###.##")
+                "$ " + dec.format(price)
+            }
         }
 
         fun formatPriceVolumeHoraCoin(price: Double): String {
-            val teste = ((price / 10000000000000) * 1000) * 1000
-            val dec = DecimalFormat("#0.00")
+            // val teste = ((price / 10000000000000) * 1000) * 1000
+            val dec = DecimalFormat("##,###.##")
             // return String.format("$ %.2f", price)
-            return dec.format(teste)
+            return dec.format(price)
         }
 
         fun formatPriceVolumeDiaCoin(price: Double): String {
-            val teste = ((price / 1000000000000000) * 1000) * 1000
-            val dec = DecimalFormat("#0.00")
+            // val teste = ((price / 1000000000000000) * 1000) * 1000
+            val dec = DecimalFormat("##,###.##")
             // return String.format("$ %.2f", price)
-            return dec.format(teste)
+            return dec.format(price)
         }
 
         fun formatPriceVolumeMesCoin(price: Double): String {
-            val teste = ((price / 1000000000000000000) * 100) * 1000
-            val dec = DecimalFormat("#0.00")
+            // val teste = ((price / 1000000000000000000) * 100) * 1000
+            val dec = DecimalFormat("##,###.##")
             // return String.format("$ %.2f", price)
-            return dec.format(teste)
+            return dec.format(price)
         }
     }
 }

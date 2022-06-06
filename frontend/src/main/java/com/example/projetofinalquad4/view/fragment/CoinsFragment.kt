@@ -72,7 +72,7 @@ class CoinsFragment : Fragment() {
     }
 
     private fun setupUi() {
-        binding.include.tvMainDate.text = Helpers.GetCalendarDate()
+        //binding.include.tvMainDate.text = Helpers.GetCalendarDate()
         configAdapter()
     }
 

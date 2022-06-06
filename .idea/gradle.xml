@@ -14,7 +14,6 @@
             <option value="$PROJECT_DIR$/frontend" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

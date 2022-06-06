@@ -35,7 +35,7 @@ class AdapterFavorites : ListAdapter<CoinItem, AdapterFavorites.ViewHolder>(DIFF
         fun bind(x: CoinItem) {
             binding.tvNameFavorite.text = x.name
             binding.tvNameAbrevietedFavorite.text = x.asset_id
-            binding.tvPriceFavorite.text = "$ " + Helpers.formatPriceCoin(x.price_usd)
+            binding.tvPriceFavorite.text = Helpers.formatPriceCoin(x.price_usd)
 
             if (!x.icon_url.isNullOrEmpty()) {
                 Glide.with(binding.root.context)
