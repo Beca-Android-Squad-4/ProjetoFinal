@@ -14,7 +14,7 @@
         android:layout_width="350dp"
         android:layout_height="309dp"
         android:contentDescription="@string/try_again"
-        android:src="@drawable/img_error_transparent" />
+        android:src="@drawable/img_error_transparent"/>
 
     <TextView
         android:id="@+id/mensagem"

@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.bumptech.glide.Glide
 import com.example.projetofinalquad4.R
 import com.example.projetofinalquad4.databinding.FragmentErrorBinding
 import com.example.projetofinalquad4.utils.Helpers
 import com.example.projetofinalquad4.view.viewModel.MainViewModel
-import kotlinx.android.synthetic.main.fragment_error.view.*
 
 class ErrorFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels() { Helpers.getMainViewModelFactory() }
@@ -41,7 +41,68 @@ class ErrorFragment : Fragment() {
 
     private fun mensagemErro() {
         val mensagem = viewModel.mensagem
-        binding.mensagem.text = mensagem
+        if (mensagem.contains("400")) {
+            binding.mensagem.text = "Instabilidade no seu computador ou na sua conexão de Internet."
+            Glide.with(requireContext())
+                .load(R.drawable.error_400)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("401")) {
+            binding.mensagem.text = "O site que você está tentando acessar se encontra protegido e requer autorização ou autenticação"
+            Glide.with(requireContext())
+                .load(R.drawable.error_401_3)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("403")) {
+            binding.mensagem.text = "Negação por parte do proprietário, que não permite que a página receba visitas"
+            Glide.with(requireContext())
+                .load(R.drawable.error_403)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("404")) {
+            binding.mensagem.text = "URL não localizada"
+            Glide.with(requireContext())
+                .load(R.drawable.img_error_transparent)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("410")) {
+            binding.mensagem.text = "URL excluída permanentemente"
+            Glide.with(requireContext())
+                .load(R.drawable.erro_410)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("500")) {
+            binding.mensagem.text = "O servidor não pode atender sua solicitação neste momento"
+            Glide.with(requireContext())
+                .load(R.drawable.error_500)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("502")) {
+            binding.mensagem.text = "Falha de comunicação entre os servidores"
+            Glide.with(requireContext())
+                .load(R.drawable.error_502)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("503")) {
+            binding.mensagem.text = "Serviço temporariamente indisponível"
+            Glide.with(requireContext())
+                .load(R.drawable.error_503)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("504")) {
+            binding.mensagem.text = "Esperando por muito tempo para receber a resposta do servidor"
+            Glide.with(requireContext())
+                .load(R.drawable.error_504)
+                .centerCrop()
+                .into(binding.imageView2)
+        } else if (mensagem.contains("505")) {
+            binding.mensagem.text = "Versão HTTP não suportada"
+            Glide.with(requireContext())
+                .load(R.drawable.error_505)
+                .centerCrop()
+                .into(binding.imageView2)
+        }
+        // binding.mensagem.text = mensagem
     }
 }
 
