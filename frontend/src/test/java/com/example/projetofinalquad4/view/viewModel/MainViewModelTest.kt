@@ -40,18 +40,6 @@ class MainViewModelTest {
     }
 
     @Test
-    fun `When api call is successful`() {
-        // TODO
-        Assert.assertEquals(true, true)
-    }
-
-    @Test
-    fun `When api call is fail`() {
-        // TODO
-        Assert.assertEquals(true, true)
-    }
-
-    @Test
     fun `Set ID of _coinSelected and return the same ID in coinSelected`() {
         // Given
         val id = "BTC"
