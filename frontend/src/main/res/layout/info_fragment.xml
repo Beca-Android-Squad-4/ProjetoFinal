@@ -122,19 +122,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
-                        android:text="Última hora:"
+                        android:text="Última hora: "
                         android:hint="@string/last_hour"/>
 
                     <TextView
                         android:id="@+id/tv_priceHour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/last_price_hour"
-                        android:gravity="end"
                         android:layout_weight="1"
+                        android:gravity="end"
+                        android:hint="@string/last_price_hour"
                         android:maxLines="1"
-                        android:textSize="24sp"
-                        />
+                        android:ellipsize="end"
+                        android:textSize="24sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -147,7 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
-                        android:text="Ultimo dia:"
+                        android:text="Ultimo dia: "
                         android:hint="@string/last_day"/>
 
                     <TextView
@@ -158,6 +158,7 @@
                         android:hint="@string/last_price_day"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:ellipsize="end"
                         android:textSize="24sp"
                          />
                 </LinearLayout>
@@ -172,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="24sp"
                         android:hint="@string/last_month"
-                        android:text="Ultimo mês:" />
+                        android:text="Ultimo mês: " />
 
                     <TextView
                         android:id="@+id/tv_priceMonth"
@@ -182,6 +183,7 @@
                         android:hint="@string/last_price_month"
                         android:layout_weight="1"
                         android:maxLines="1"
+                        android:ellipsize="end"
                         android:textSize="24sp"
                         />
                 </LinearLayout>
