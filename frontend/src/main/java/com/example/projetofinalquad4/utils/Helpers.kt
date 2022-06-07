@@ -1,7 +1,5 @@
 package com.example.projetofinalquad4.utils
 
-import android.content.Context
-import android.widget.Toast
 import com.example.projetofinalquad4.view.viewModel.MainViewModelFactory
 import com.nttdata.test.backend.data.remote.ICoinsClient
 import com.nttdata.test.backend.data.remote.dto.CoinItem
@@ -12,7 +10,6 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 
 class Helpers {
 

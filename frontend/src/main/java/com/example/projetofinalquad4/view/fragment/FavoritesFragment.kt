@@ -63,6 +63,7 @@ class FavoritesFragment : Fragment() {
     private fun getFavorites(list: CoinApiResult<List<CoinItem>>) {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         Log.d("ListFavorites", "getFavorites: ${sharedPref.all}")
+        if (sharedPref.all.isEmpty()) binding.tvNoFavorites.visibility = View.VISIBLE else binding.tvNoFavorites.visibility = View.GONE
         val tempList: MutableList<CoinItem> = ArrayList()
         when (list) {
             is CoinApiResult.Success -> {
