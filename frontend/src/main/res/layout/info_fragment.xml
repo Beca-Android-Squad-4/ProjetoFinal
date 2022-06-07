@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:maxHeight="700dp"
-                android:minHeight="500dp"
+                android:minHeight="400dp"
                 android:background="@color/bg_fragment"
                 android:gravity="top|center_horizontal"
                 android:orientation="vertical"
@@ -121,7 +121,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:textSize="24sp"
                         android:text="Última hora:"
                         android:hint="@string/last_hour"/>
@@ -130,10 +129,11 @@
                         android:id="@+id/tv_priceHour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="24sp"
                         android:hint="@string/last_price_hour"
                         android:gravity="end"
                         android:layout_weight="1"
+                        android:maxLines="1"
+                        android:textSize="24sp"
                         />
                 </LinearLayout>
 
@@ -146,7 +146,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:textSize="24sp"
                         android:text="Ultimo dia:"
                         android:hint="@string/last_day"/>
@@ -157,8 +156,9 @@
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:hint="@string/last_price_day"
-                        android:textSize="24sp"
                         android:layout_weight="1"
+                        android:maxLines="1"
+                        android:textSize="24sp"
                          />
                 </LinearLayout>
 
@@ -170,7 +170,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:textSize="24sp"
                         android:hint="@string/last_month"
                         android:text="Ultimo mês:" />
@@ -181,8 +180,9 @@
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:hint="@string/last_price_month"
-                        android:textSize="24sp"
                         android:layout_weight="1"
+                        android:maxLines="1"
+                        android:textSize="24sp"
                         />
                 </LinearLayout>
 
@@ -198,7 +198,6 @@
                 app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/tv_coinName"
                 app:srcCompat="@drawable/ic_star_24"
                 app:tint="@color/white" />
 

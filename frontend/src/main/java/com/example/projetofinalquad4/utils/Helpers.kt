@@ -9,6 +9,8 @@ import com.nttdata.test.backend.data.repository.CoinsRepository
 import com.nttdata.test.backend.networkUtils.RetrofitInstance
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -31,8 +33,14 @@ class Helpers {
             return newList
         }
 
-        fun GetCalendarDate(): String {
-            return SimpleDateFormat("d MMM yyyy", Locale("pt-BR", "Brazil", "")).format(Date())
+        fun getCalendarDate(): String {
+            return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                val current = LocalDateTime.now()
+                val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy")
+                current.format(formatter)
+            } else {
+                SimpleDateFormat("d MMM yyyy", Locale("pt-BR", "Brazil", "")).format(Date())
+            }
         }
 
         fun getMainViewModelFactory(): MainViewModelFactory {
@@ -52,6 +60,10 @@ class Helpers {
                 "$ " + dec.format(price)
             } else if (price.equals(0)) {
                 "Sem Preço"
+            } else if (price > 9999999) {
+                val dec = DecimalFormat("##,###,###")
+                var result = "$ " + dec.format(price)
+                result
             } else {
                 val dec = DecimalFormat("##,###.##")
                 "$ " + dec.format(price)

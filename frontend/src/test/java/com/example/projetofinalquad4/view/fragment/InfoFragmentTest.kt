@@ -33,12 +33,6 @@ class InfoFragmentTest {
             )
         )
         mainViewModel.setCoin("BTC")
-
-        mainViewModelError = MainViewModel(
-            CoinsRepository(
-                ICoinsClientFake("ERRO-Generic")
-            )
-        )
     }
 
     @Test
