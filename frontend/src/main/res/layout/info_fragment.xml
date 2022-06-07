@@ -19,6 +19,7 @@
         android:textAlignment="center"
         android:textSize="17sp"
         app:drawableLeftCompat="@drawable/ic_baseline_chevron_left_24"
+        app:layout_constraintEnd_toStartOf="@+id/tv_coinName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
