@@ -7,7 +7,7 @@
     <string name="name_coin">Nome da Moeda</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="go_back">Go Back</string>
+    <string name="go_back">Voltar</string>
     <string name="add">Adicionar como favorito</string>
     <string name="last_hour">Última hora</string>
     <string name="last_day">Último dia</string>
