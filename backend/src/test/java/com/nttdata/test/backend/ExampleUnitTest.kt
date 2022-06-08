@@ -1,7 +1,6 @@
 package com.nttdata.test.backend
 
 import org.junit.Test
-
 import org.junit.Assert.*
 
 /**
