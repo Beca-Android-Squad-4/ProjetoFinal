@@ -19,7 +19,7 @@ class Helpers {
             var newList: MutableList<CoinItem> = ArrayList()
             list.forEach {
                 if (it.asset_id.contains(text.toString(), true)
-                    or it.name.contains(text.toString(), false)
+                    or it.name.contains(text.toString(), true)
                 ) {
                     newList.add(it)
                 }
